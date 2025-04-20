@@ -603,3 +603,88 @@
 2025-04-15 15:45:58,954 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:58] "[32mGET /logout HTTP/1.1[0m" 302 -
 2025-04-15 15:45:59,285 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:59] "GET / HTTP/1.1" 200 -
 2025-04-15 15:45:59,351 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:59] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-19 22:53:59,724 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:53:59,738 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:53:59,849 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.46:5000
+2025-04-19 22:53:59,849 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-19 22:53:59,865 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 22:54:01,121 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:54:01,121 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:54:01,153 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 22:54:01,153 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 22:55:15,403 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:55:15,403 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:55:15,447 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.46:5000
+2025-04-19 22:55:15,447 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-19 22:55:15,449 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 22:55:16,830 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:55:16,830 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:55:16,850 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 22:55:16,854 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 22:55:31,012 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:31] "GET / HTTP/1.1" 200 -
+2025-04-19 22:55:31,563 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:31] "GET /static/logo.png HTTP/1.1" 200 -
+2025-04-19 22:55:32,274 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-19 22:55:35,818 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:35] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-19 22:55:36,039 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:36] "GET /painel HTTP/1.1" 200 -
+2025-04-19 22:55:36,418 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:36] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-19 22:55:42,052 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:42] "GET /arquivo HTTP/1.1" 200 -
+2025-04-19 22:55:42,251 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:42] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-19 22:55:43,402 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:43] "GET /agenda HTTP/1.1" 200 -
+2025-04-19 22:55:43,688 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-19 22:55:45,434 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:45] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-19 22:55:45,653 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:45] "GET / HTTP/1.1" 200 -
+2025-04-19 22:55:45,724 - werkzeug - INFO - 127.0.0.1 - - [19/Apr/2025 22:55:45] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-19 22:56:54,471 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\AplicativoFilaEscoliose\\app.py', reloading
+2025-04-19 22:56:54,700 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 22:56:56,288 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:56:56,288 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:56:56,295 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 22:56:56,311 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 22:57:02,389 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\AplicativoFilaEscoliose\\app.py', reloading
+2025-04-19 22:57:02,570 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 22:57:04,711 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:57:04,711 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:57:04,756 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 22:57:04,764 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 22:58:31,338 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:58:31,338 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:58:31,381 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.46:5000
+2025-04-19 22:58:31,383 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-19 22:58:31,383 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 22:58:32,654 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 22:58:32,654 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 22:58:32,670 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 22:58:32,670 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 23:00:13,435 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 23:00:13,435 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 23:00:13,470 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.46:5000
+2025-04-19 23:00:13,470 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-19 23:00:13,474 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 23:00:14,671 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 23:00:14,671 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 23:00:14,683 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 23:00:14,683 - werkzeug - INFO -  * Debugger PIN: 778-119-898
+2025-04-19 23:01:06,298 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 23:01:06,298 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 23:01:06,354 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.46:5000
+2025-04-19 23:01:06,354 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-19 23:01:06,358 - werkzeug - INFO -  * Restarting with stat
+2025-04-19 23:01:07,666 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-19 23:01:07,666 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-19 23:01:07,684 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 23:01:07,684 - werkzeug - INFO -  * Debugger PIN: 778-119-898
