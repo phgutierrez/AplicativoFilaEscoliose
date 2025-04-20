@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h2>📋 Nova Consulta - Escore de Priorização</h2>
+<p>🧓 Idade do paciente: <strong>{{ idade }}</strong> anos</p>
+<form method="POST">
+    {% for campo, label, opcoes in [
+        ('tipo', 'Tipo de Escoliose', ['1:Idiopática', '3:Neuromuscular', '2:Sindrômica']),
+        ('cobb', 'Ângulo de Cobb', ['1:40°-59°', '2:60°-79°', '3:≥80°']),
+        ('progresso', 'Progressão', ['0:Sem', '1:≤10°', '2:>10°']),
+        ('idade_classe', 'Faixa Etária', ['0:>14a', '1:11-14a', '2:≤10a']),
+        ('risser', 'Sinal de Risser', ['0:Risser 3-5', '2:Risser 0-2']),
+        ('status', 'Menarca / Sexo', ['0:Pós-Menarca', '2:Pré-Menarca / masc']),
+        ('comorbidade', 'Comorbidades', ['0:Nenhuma', '1:Gastrostomia/Epilepsia', '2:Traqueo/VNI']),
+        ('dor', 'Dor / Funcionalidade', ['0:Nenhuma', '1:Moderada', '2:Intensa']),
+        ('tempo', 'Tempo de Espera', ['0:<6 meses', '1:6-12 meses', '2:>12 meses'])
+    ] %}
+    <label>{{ label }}:
+        <select name="{{ campo }}" required>
+        {% for opt in opcoes %}
+            {% set val, txt = opt.split(':') %}
+            <option value="{{ val }}" {% if campo == 'idade_classe' and val == faixa %}selected{% endif %}>{{ txt }}</option>
+	    
+        {% endfor %}
+        </select>
+    </label>
+    {% endfor %}
+    <button type="submit">Salvar Consulta</button>
+</form>
+
+{% if historico %}
+<h3>📑 Histórico de Consultas</h3>
+<table>
+    <thead>
+        <tr><th>Data</th><th>Escore</th><th>Prioridade</th></tr>
+    </thead>
+    <tbody>
+    {% for c in historico %}
+        <tr class="prioridade-{{ c[3]|lower|replace(' ', '-') }}">
+            <td>{{ c[2] }}</td>
+            <td>{{ c[4] }}</td>
+            <td>{{ c[3] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<a href="{{ url_for('painel') }}">⬅ Voltar à lista</a>
+{% endblock %}

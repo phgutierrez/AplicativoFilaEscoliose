@@ -1,0 +1,17 @@
+flask
+werkzeug
+openpyxl
+flask-wtf
+flask-talisman
+python-dotenv
+Flask-Limiter
+pyotp
+sqlalchemy
+redis
+
+# Use pre-compiled wheels instead of building from source
+--only-binary=numpy,pandas
+
+# Specific versions that work with Python 3.13
+numpy
+pandas

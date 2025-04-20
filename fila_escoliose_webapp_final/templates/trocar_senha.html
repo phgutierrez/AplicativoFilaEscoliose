@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-container">
+    <div class="page-header">
+        <div class="header-content">
+            <h1 class="page-title"><i class="fas fa-key"></i> Trocar Senha</h1>
+            <div class="header-actions">
+                <a href="{{ url_for('painel') }}" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Painel
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            
+            <div class="form-group">
+                <label for="nova_senha"><i class="fas fa-lock"></i> Nova Senha</label>
+                <div class="password-container">
+                    <input type="password" id="nova_senha" name="nova_senha" class="form-control" required 
+                           placeholder="Digite sua nova senha">
+                    <button type="button" class="toggle-password" tabindex="-1">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="password-strength-meter">
+                    <div class="strength-bar"></div>
+                </div>
+                <small class="form-text text-muted">
+                    A senha deve conter pelo menos 8 caracteres, incluindo letras maiúsculas, 
+                    minúsculas, números e caracteres especiais.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="confirma_senha"><i class="fas fa-lock-open"></i> Confirmar Nova Senha</label>
+                <div class="password-container">
+                    <input type="password" id="confirma_senha" name="confirma_senha" class="form-control" required 
+                           placeholder="Confirme sua nova senha">
+                    <button type="button" class="toggle-password" tabindex="-1">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="match-indicator"></div>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Salvar Nova Senha
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alerts-container">
+                {% for message in messages %}
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>{{ message }}</span>
+                        <button class="close-alert">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<style nonce="{{ csp_nonce() }}">
+    .dashboard-container {
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .page-header {
+        margin-bottom: 20px;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        margin: 0;
+        color: #333;
+    }
+    
+    .header-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .form-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #444;
+    }
+    
+    .form-group label i {
+        margin-right: 8px;
+        color: #2196F3;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #2196F3;
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        outline: none;
+    }
+    
+    .password-container {
+        position: relative;
+    }
+    
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #777;
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    .toggle-password:hover {
+        color: #333;
+    }
+    
+    .password-strength-meter {
+        height: 5px;
+        background-color: #eee;
+        margin-top: 8px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    
+    .strength-bar {
+        height: 100%;
+        width: 0;
+        transition: width 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .match-indicator {
+        height: 5px;
+        margin-top: 8px;
+        border-radius: 3px;
+    }
+    
+    .match-indicator.match {
+        background-color: #4CAF50;
+    }
+    
+    .match-indicator.no-match {
+        background-color: #F44336;
+    }
+    
+    .form-text {
+        display: block;
+        margin-top: 5px;
+        font-size: 0.85rem;
+        color: #666;
+    }
+    
+    .form-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        text-decoration: none;
+    }
+    
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #43a047;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        color: #666;
+    }
+    
+    .btn-outline:hover {
+        background-color: #f5f5f5;
+    }
+    
+    .alerts-container {
+        margin-top: 20px;
+    }
+    
+    .alert {
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .alert i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .alert span {
+        flex: 1;
+    }
+    
+    .alert-warning {
+        background-color: #FFF3CD;
+        border-left: 4px solid #FFC107;
+        color: #856404;
+    }
+    
+    .alert-danger {
+        background-color: #F8D7DA;
+        border-left: 4px solid #DC3545;
+        color: #721C24;
+    }
+    
+    .close-alert {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: inherit;
+        opacity: 0.7;
+    }
+    
+    .close-alert:hover {
+        opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .form-buttons {
+            flex-direction: column;
+        }
+        
+        .form-card {
+            padding: 20px;
+        }
+    }
+</style>
+
+<script nonce="{{ csp_nonce() }}">
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(function(toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+    });
+    
+    // Password strength meter
+    const passwordInput = document.getElementById('nova_senha');
+    const confirmInput = document.getElementById('confirma_senha');
+    const strengthBar = document.querySelector('.strength-bar');
+    const matchIndicator = document.querySelector('.match-indicator');
+    
+    passwordInput.addEventListener('input', function() {
+        const password = this.value;
+        let strength = 0;
+        
+        if (password.length >= 8) strength += 25;
+        if (password.match(/[A-Z]/)) strength += 25;
+        if (password.match(/[0-9]/)) strength += 25;
+        if (password.match(/[^A-Za-z0-9]/)) strength += 25;
+        
+        strengthBar.style.width = strength + '%';
+        
+        if (strength <= 25) {
+            strengthBar.style.backgroundColor = '#f44336';
+        } else if (strength <= 50) {
+            strengthBar.style.backgroundColor = '#ff9800';
+        } else if (strength <= 75) {
+            strengthBar.style.backgroundColor = '#ffeb3b';
+        } else {
+            strengthBar.style.backgroundColor = '#4caf50';
+        }
+        
+        // Check password match
+        checkPasswordMatch();
+    });
+    
+    confirmInput.addEventListener('input', checkPasswordMatch);
+    
+    function checkPasswordMatch() {
+        const password = passwordInput.value;
+        const confirm = confirmInput.value;
+        
+        if (confirm.length > 0) {
+            if (password === confirm) {
+                matchIndicator.className = 'match-indicator match';
+            } else {
+                matchIndicator.className = 'match-indicator no-match';
+            }
+        } else {
+            matchIndicator.className = 'match-indicator';
+        }
+    }
+    
+    // Close alerts
+    document.querySelectorAll('.close-alert').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            this.parentElement.remove();
+        });
+    });
+});
+</script>
+{% endblock %}

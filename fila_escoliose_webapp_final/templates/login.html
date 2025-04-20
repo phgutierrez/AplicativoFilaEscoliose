@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de espera para cirurgias de escoliose</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style nonce="{{ csp_nonce() }}">
+        :root {
+            --primary-color: #4CAF50;
+            --primary-hover: #45a049;
+            --text-primary: #2c3e50;
+            --background: #f5f7fa;
+            --card-bg: #FFFFFF;
+            --error: #f44336;
+            --input-border: #e1e1e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            text-align: center;
+            background: var(--card-bg);
+            max-width: 90%;
+            width: 380px;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+        }
+
+        .titulo-sistema {
+            font-size: 20px;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .logo {
+            width: 150px;            /* Increased from 120px */
+            height: 150px;           /* Increased from 120px */
+            object-fit: cover;
+            margin-bottom: 2.5rem;   /* Increased from 2rem */
+            border-radius: 20%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .login-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .login-titulo {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .login-celula {
+            background-color: var(--card-bg);
+            padding: 15px;
+        }
+
+        .login-celula label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            text-align: left;
+        }
+
+        .login-celula input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 15px;
+            margin: 4px 0;
+            transition: all 0.2s ease;
+        }
+
+        .login-celula input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+        }
+
+        .btn-entrar {
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-entrar:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+        }
+
+        .flash-message {
+            background: var(--error);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            .titulo-sistema {
+                font-size: 18px;
+            }
+            .logo {
+                width: 100px;        /* Increased from 80px */
+                height: 100px;       /* Increased from 80px */
+            }
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+            padding: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="titulo-sistema">Lista de espera para cirurgias de escoliose</h2>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <table class="login-table">
+                <tr>
+                    <td class="login-titulo">Login</td>
+                </tr>
+                <tr>
+                    <td class="login-celula">
+                        <label for="usuario">Usuário:</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="usuario" name="usuario" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="login-celula">
+                        <label for="senha">Senha:</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="senha" name="senha" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="login-celula">
+                        <button type="submit" class="btn-entrar">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script nonce="{{ csp_nonce() }}">
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-password');
+            const senhaInput = document.getElementById('senha');
+
+            toggleButton.addEventListener('click', function() {
+                const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                senhaInput.setAttribute('type', type);
+                
+                // Toggle icon
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+    </script>
+</body>
+</html>

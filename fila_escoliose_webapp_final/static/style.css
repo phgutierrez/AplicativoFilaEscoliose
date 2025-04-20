@@ -1,0 +1,91 @@
+
+body { font-family: Arial; background: #f2f2f2; padding: 20px; }
+.container { background: #fff; padding: 20px; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+th { background: #eee; }
+label { display: block; margin-top: 10px; }
+button { margin-top: 10px; padding: 6px 10px; }
+input[type="text"], input[type="password"], input[type="date"] { padding: 6px; width: 250px; }
+a { text-decoration: none; margin-right: 10px; }
+.prioridade-Alta-Prioridade { background-color: #ffcccc; }
+.prioridade-Prioridade-Intermediária { background-color: #fff8b3; }
+.prioridade-Prioridade-Eletiva { background-color: #ccffcc; }
+fieldset {
+    margin-bottom: 1rem;
+    border: none;
+  }
+  .grupo-radio label {
+    display: inline-block;
+    background: #eee;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .grupo-radio input[type="radio"] {
+    display: none;
+  }
+  .grupo-radio input[type="radio"]:checked + span {
+    background-color: #b3d9ff;
+  }
+  /* Estilo para grupos de radios estilo caixa */
+.grupo-radio label {
+    display: inline-block;
+    margin: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .grupo-radio input[type="radio"] {
+    display: none;
+  }
+  
+  .grupo-radio span {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #eee;
+  }
+  
+  .grupo-radio input[type="radio"]:checked + span {
+    background-color: #cce5ff;
+    border-color: #3399ff;
+    font-weight: bold;
+  }
+  table.criterios {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table.criterios td {
+    padding: 8px 12px;
+    vertical-align: top;
+  }
+  
+  .opcao-radio {
+    margin-right: 1.5rem;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .opcao-radio input[type="radio"] {
+    margin-right: 6px;
+  }
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    table, table * {
+      visibility: visible;
+    }
+    table {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    button, a, h2, h3 {
+      display: none !important;
+    }
+  }
+   

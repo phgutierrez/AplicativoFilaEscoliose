@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-container">
+    <div class="page-header">
+        <div class="header-content">
+            <h1 class="page-title"><i class="fas fa-stethoscope"></i> Nova Consulta</h1>
+            <div class="header-actions">
+                <a href="{{ url_for('painel') }}" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Voltar à Lista
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="stats-row">
+        <div class="stat-card primary">
+            <div class="stat-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ idade }} anos</p>
+                <p class="stat-label">Idade do Paciente</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h2 class="card-title">Escore de Priorização</h2>
+        
+        <form method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            
+            <div class="criteria-grid">
+                {% for campo, label, opcoes in [
+                    ('tipo', 'Tipo de Escoliose', ['1:Idiopática', '3:Neuromuscular', '2:Sindrômica']),
+                    ('cobb', 'Ângulo de Cobb', ['1:40°-59°', '2:60°-79°', '3:≥80°']),
+                    ('progresso', 'Progressão', ['0:Sem', '1:≤10°', '2:>10°']),
+                    ('idade_classe', 'Faixa Etária', ['0:>14a', '1:11-14a', '2:≤10a']),
+                    ('risser', 'Sinal de Risser', ['0:Risser 3-5', '2:Risser 0-2']),
+                    ('status', 'Menarca / Sexo', ['0:Pós-Menarca', '2:Pré-Menarca / masc']),
+                    ('comorbidade', 'Comorbidades', ['0:Nenhuma', '1:Gastrostomia/Epilepsia', '2:Traqueo/VNI']),
+                    ('dor', 'Dor / Funcionalidade', ['0:Nenhuma', '1:Moderada', '2:Intensa']),
+                    ('tempo', 'Tempo de Espera', ['0:<6 meses', '1:6-12 meses', '2:>12 meses'])
+                ] %}
+                <div class="criteria-item">
+                    <label class="criteria-label">{{ label }}</label>
+                    <div class="options-container">
+                        {% for opt in opcoes %}
+                            {% set val, txt = opt.split(':') %}
+                            {% if campo == 'idade_classe' %}
+                                <label class="radio-option {% if val == faixa %}selected{% endif %}">
+                                    <input type="radio" name="{{ campo }}" value="{{ val }}" {% if val == faixa %}checked{% endif %} disabled>
+                                    <span class="radio-text">{{ txt }}</span>
+                                </label>
+                            {% else %}
+                                <label class="radio-option">
+                                    <input type="radio" name="{{ campo }}" value="{{ val }}" required>
+                                    <span class="radio-text">{{ txt }}</span>
+                                </label>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if campo == 'idade_classe' %}
+                            <input type="hidden" name="idade_classe" value="{{ faixa }}">
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Salvar Consulta
+                </button>
+            </div>
+        </form>
+    </div>
+
+    {% if historico %}
+    <div class="history-card">
+        <h2 class="card-title"><i class="fas fa-history"></i> Histórico de Consultas</h2>
+        
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Escore</th>
+                        <th>Prioridade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in historico %}
+                    <tr>
+                        <td>{{ c[2] }}</td>
+                        <td class="text-center">
+                            <span class="escore-badge">{{ c[4] }}</span>
+                        </td>
+                        <td>
+                            <span class="priority-tag {{ c[3]|lower|replace(' ', '-') }}">
+                                <i class="fas fa-circle"></i> {{ c[3] }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style nonce="{{ csp_nonce() }}">
+    :root {
+        --alta-prioridade: #ef5350;
+        --alta-prioridade-bg: #ffebee;
+        --prioridade-intermediária-bg: #fff3e0;
+        --prioridade-intermediária: #ff9800;
+        --prioridade-eletiva: #4caf50;
+        --prioridade-eletiva-bg: #e8f5e9;
+    }
+    
+    .dashboard-container {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .page-header {
+        margin-bottom: 20px;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        margin: 0;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .header-actions {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        text-decoration: none;
+    }
+    
+    .btn-primary {
+        background-color: #4CAF50;
+        color: white;
+        box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+    }
+    
+    .btn-primary:hover {
+        background-color: #43a047;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    }
+    
+    .btn-outline {
+        background-color: transparent;
+        color: #666;
+        border: 1px solid #ddd;
+    }
+    
+    .btn-outline:hover {
+        background-color: #f5f5f5;
+        transform: translateY(-2px);
+    }
+    
+    .stats-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .stat-card {
+        flex: 1;
+        min-width: 200px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        transition: transform 0.2s;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .stat-card.primary {
+        border-left: 4px solid #2196F3;
+    }
+    
+    .stat-icon {
+        font-size: 2.2rem;
+        padding-right: 15px;
+        color: #2196F3;
+    }
+    
+    .stat-content {
+        flex: 1;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        color: #333;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+    }
+    
+    .form-card, .history-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .card-title {
+        font-size: 1.3rem;
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .criteria-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+    }
+    
+    .criteria-item {
+        margin-bottom: 15px;
+    }
+    
+    .criteria-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #333;
+    }
+    
+    .options-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .radio-option {
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .radio-option:hover {
+        background-color: #e9e9e9;
+    }
+    
+    .radio-option input[type="radio"] {
+        opacity: 0;
+        position: absolute;
+    }
+    
+    .radio-option input[type="radio"]:checked + .radio-text {
+        font-weight: 500;
+        color: #2196F3;
+    }
+    
+    .radio-option.selected {
+        background-color: #e3f2fd;
+        border-color: #90caf9;
+    }
+    
+    .radio-option.selected .radio-text {
+        font-weight: 500;
+        color: #1976D2;
+    }
+    
+    .form-actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        margin-bottom: 20px;
+    }
+    
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .data-table th {
+        background-color: #f5f5f5;
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .data-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    .escore-badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background-color: #eee;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #333;
+    }
+    
+    .priority-tag {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+    
+    .priority-tag.alta-prioridade {
+        background-color: var(--alta-prioridade-bg);
+        color: var(--alta-prioridade);
+    }
+    
+    .priority-tag.prioridade-intermediária {
+        background-color: var(--prioridade-intermediária-bg);
+        color: var(--prioridade-intermediária);
+    }
+    
+    .priority-tag.prioridade-eletiva {
+        background-color: var(--prioridade-eletiva-bg);
+        color: var(--prioridade-eletiva);
+    }
+    
+    .priority-tag i {
+        font-size: 0.7rem;
+        margin-right: 4px;
+    }
+    
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .criteria-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<script nonce="{{ csp_nonce() }}">
+document.addEventListener('DOMContentLoaded', function() {
+    // Highlight selected radio options
+    const radioInputs = document.querySelectorAll('.radio-option input[type="radio"]');
+    
+    radioInputs.forEach(input => {
+        // Set initial state
+        if (input.checked) {
+            input.closest('.radio-option').classList.add('selected');
+        }
+        
+        // Update on change
+        input.addEventListener('change', function() {
+            // Remove selected class from all options in this group
+            const name = this.getAttribute('name');
+            document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(radio => {
+                radio.closest('.radio-option').classList.remove('selected');
+            });
+            
+            // Add selected class to this option
+            if (this.checked) {
+                this.closest('.radio-option').classList.add('selected');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

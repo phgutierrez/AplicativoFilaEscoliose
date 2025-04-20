@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Paciente: {{ paciente[1] }}</h2>
+<p>Data de nascimento: {{ paciente[2] }}</p>
+<a href="{{ url_for('nova_consulta', paciente_id=paciente[0]) }}">➕ Nova Consulta</a>
+<h3>Consultas</h3>
+<table>
+    <thead><tr><th>Data</th><th>Escore</th><th>Prioridade</th><th>Idade na consulta</th></tr></thead>
+    <tbody>
+    {% for c in consultas %}
+        <tr><td>{{ c[2] }}</td><td>{{ c[12] }}</td><td>{{ c[13] }}</td><td>{{ c[6] }}</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

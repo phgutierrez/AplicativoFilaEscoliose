@@ -1,0 +1,1121 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style nonce="{{ csp_nonce() }}">
+    :root {
+        --alta-prioridade: #ef5350;
+        --alta-prioridade-bg: #ffebee;
+        --prioridade-intermediaria: #ff9800;
+        --prioridade-intermediaria-bg: #fff3e0;
+        --prioridade-eletiva: #4caf50;
+        --prioridade-eletiva-bg: #e8f5e9;
+    }
+
+    .dashboard-container {
+        padding: 1rem 0;
+    }
+
+    .page-header {
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+        color: #3c4858;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .page-title i {
+        color: #4CAF50;
+    }
+
+    .stats-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+        flex: 1;
+        min-width: 150px; /* Reduzindo de 200px para 150px */
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 1.25rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: transform 0.2s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .stat-icon.alta {
+        background-color: var(--alta-prioridade);
+    }
+
+    .stat-icon.media {
+        background-color: var(--prioridade-intermediaria);
+    }
+
+    .stat-icon.baixa {
+        background-color: var(--prioridade-eletiva);
+    }
+
+    .stat-icon.total {
+        background-color: #3f51b5;
+    }
+
+    .stat-icon.cirurgias {
+        background-color: #4caf50;
+    }
+
+    .stat-content {
+        flex: 1;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+    }
+
+    .stat-label {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .action-bar {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .actions-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .btn-secondary {
+        background: #2196F3;
+        color: white;
+    }
+
+    .btn-danger {
+        background: #f44336;
+        color: white;
+    }
+
+    .btn-danger:hover {
+        background: #e53935;
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 200px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+        transform: translateY(-2px);
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.85rem 1rem 0.85rem 2.75rem;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 3px 15px rgba(76, 175, 80, 0.2);
+    }
+
+    .search-clear {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #bbb;
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 5px;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+    
+    .search-clear:hover {
+        background-color: #f1f1f1;
+        color: #777;
+    }
+
+    .search-input:not(:placeholder-shown) + .search-clear {
+        opacity: 1;
+    }
+
+    .btn-action.success {
+        background: #e8f5e9;
+        color: #2e7d32;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .btn-action.success:hover {
+        background: #4CAF50;
+        color: white;
+        transform: translateY(-3px);
+    }
+    
+    .btn-action.success:hover::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        top: 0;
+        left: 0;
+        border-radius: 6px;
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1.3);
+        }
+    }
+    
+    .action-btn.btn-success {
+        background: #e8f5e9;
+        color: #2e7d32;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .action-btn.btn-success:hover {
+        background: #4CAF50;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .pagination {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .pagination li {
+        display: inline-flex;
+    }
+
+    .pagination-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        text-decoration: none;
+    }
+
+    .patients-container {
+        display: none !important;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .patients-container.active {
+        display: grid !important; 
+    }
+
+    .table-view {
+        display: none !important;
+    }
+
+    .table-view.active {
+        display: block !important;
+    }
+
+    /* Removed empty .card-view rule */
+
+    .filter-options {
+        display: none;
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        transition: all 0.3s ease;
+        border-left: 4px solid #2196F3;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .filter-options.active {
+        display: block;
+        opacity: 1;
+        max-height: 500px; /* Altura máxima para animação */
+        overflow: visible;
+    }
+
+    .patient-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+        border-left: 5px solid transparent;
+        padding-bottom: 8px;
+    }
+
+    .patient-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+    }
+
+    .patient-header {
+        padding: 1.5rem 1.25rem 0.75rem;
+        position: relative;
+    }
+
+    .patient-name a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    .patient-name a:hover {
+        color: #1976D2;
+    }
+
+    .patient-body {
+        padding: 0.75rem 1.25rem;
+        background: #fafafa;
+        margin: 0 0.5rem;
+        border-radius: 8px;
+    }
+
+    /* Adicionar cores às células de prioridade na tabela */
+    .patients-table td .priority-tag {
+        display: inline-block;
+        width: auto; /* Mudando de 100% para auto */
+        max-width: calc(100% - 16px); /* Adicionando margem interna */
+        padding: 8px;
+        margin: 4px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    .patients-table td:nth-child(7) {
+        text-align: center;
+        padding: 0; /* Removendo padding padrão da célula */
+    }
+    
+    .patients-table td .priority-tag.alta-prioridade {
+        background-color: var(--alta-prioridade-bg);
+        color: var(--alta-prioridade);
+    }
+    
+    .patients-table td .priority-tag.prioridade-intermediária {
+        background-color: var(--prioridade-intermediaria-bg);
+        color: var(--prioridade-intermediaria);
+    }
+    
+    .patients-table td .priority-tag.prioridade-eletiva {
+        background-color: var(--prioridade-eletiva-bg);
+        color: var(--prioridade-eletiva);
+    }
+    
+    .priority-circle {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    
+    .priority-circle.alta-prioridade {
+        background-color: var(--alta-prioridade);
+    }
+    
+    .priority-circle.prioridade-intermediária {
+        background-color: var(--prioridade-intermediaria);
+    }
+    
+    .priority-circle.prioridade-eletiva {
+        background-color: var(--prioridade-eletiva);
+    }
+
+    .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        color: white;
+        margin: 0 3px;
+        cursor: pointer;
+        text-decoration: none;  /* Importante para links <a> */
+    }
+
+    .action-btn.btn-success {
+        background: #4CAF50;
+        color: white;
+    }
+
+    .action-btn.btn-success:hover {
+        background: #3d8b40;
+        transform: translateY(-2px);
+    }
+
+    .table-actions {
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    .action-btn.btn-success {
+        display: inline-flex !important;
+        background-color: #4CAF50 !important;
+        color: white !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .table-actions {
+        white-space: nowrap;
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+        min-width: 110px; /* Espaço mínimo para os três botões */
+    }
+
+    /* Estilos modernos para botões de ação na tabela */
+.table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.3s ease;
+}
+
+.action-btn:hover::before {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.action-btn:active {
+    transform: translateY(1px);
+}
+
+/* Cores específicas para cada tipo de botão */
+.action-btn.btn-info {
+    background-color: #2196F3;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+.action-btn.btn-agenda {
+    background-color: #00BCD4;
+    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.3);
+}
+
+/* Efeito de hover com elevação */
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito ao clicar */
+.action-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para tooltip nativo */
+.action-btn[title]::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    margin-bottom: 5px;
+    z-index: 100;
+}
+
+.action-btn[title]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilo para botão de demanda judicial */
+.action-btn.btn-judicial {
+    background-color: #f44336;
+    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.3);
+}
+
+.action-btn.btn-judicial.active {
+    background-color: #721c24;
+    box-shadow: 0 2px 4px rgba(114, 28, 36, 0.5);
+}
+
+.action-btn.btn-judicial.active:hover {
+    background-color: #5a171c;
+}
+
+/* Prioridade para demandas judiciais */
+.priority-tag.demanda-judicial {
+    background-color: #ffebee;
+    color: #c62828;
+    font-weight: 700;
+}
+
+.priority-circle.demanda-judicial {
+    background-color: #c62828;
+}
+
+.demanda-judicial .priority-tag {
+    border: 2px solid #c62828;
+}
+</style>
+
+<div class="dashboard-container">
+    <div class="page-header">
+        <h1 class="page-title"><i class="fas fa-procedures"></i> Fila de Pacientes para Cirurgia</h1>
+    </div>
+
+    <!-- Estatísticas resumidas -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-icon total">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ total }}</p>
+                <p class="stat-label">Total de Pacientes</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon alta">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ total_alta_prioridade }}</p>
+                <p class="stat-label">Alta Prioridade</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon media">
+                <i class="fas fa-calendar-day"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ total_intermediaria }}</p>
+                <p class="stat-label">Prioridade Intermediária</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon baixa">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ total_eletiva }}</p>
+                <p class="stat-label">Prioridade Eletiva</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon cirurgias">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+                <p class="stat-value">{{ total_operados|default(0) }}</p>
+                <p class="stat-label">Cirurgias Realizadas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de ações -->
+    <div class="action-bar">
+        <div class="actions-group">
+            {% if session['perfil'] in ['medico', 'admin'] %}
+            <a href="{{ url_for('novo') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Novo Paciente
+            </a>
+            {% endif %}
+            <a href="{{ url_for('exportar_ativos') }}" class="btn btn-secondary">
+                <i class="fas fa-download"></i> Exportar Lista
+            </a>
+            <button type="button" id="printButton" class="btn btn-secondary">
+                <i class="fas fa-print"></i> Imprimir Lista
+            </button>
+            {% if session['perfil'] == 'admin' %}
+            <a href="{{ url_for('importar_planilha') }}" class="btn btn-secondary">
+                <i class="fas fa-upload"></i> Importar Planilha
+            </a>
+            <!-- Botão para Gerenciar Usuários -->
+            <a href="{{ url_for('editar_usuarios') }}" class="btn btn-secondary">
+                <i class="fas fa-users-cog"></i> Gerenciar Usuários
+            </a>
+            <!-- Botão para Criar Usuário -->
+            <a href="{{ url_for('criar_usuario') }}" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Criar Usuário
+            </a>
+            {% endif %}
+        </div>
+        <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="buscaTabela" class="search-input" placeholder="Buscar paciente, prioridade, data...">
+            <button type="button" class="search-clear" id="clearSearch">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    {% if session['perfil'] == 'admin' %}
+<!-- Container para os formulários de exclusão com layout melhorado -->
+<div class="admin-actions" style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center; background-color: #f8f9fa; padding: 10px; border-radius: 8px;">
+    <!-- Contagem de selecionados à esquerda -->
+    <div>
+        <span id="selectedCount">0</span> pacientes selecionados
+    </div>
+    
+    <!-- Botões de exclusão à direita -->
+    <div style="display: flex; gap: 8px; flex-wrap: nowrap; align-items: center;">
+        <!-- Botão apagar selecionados -->
+        <form method="POST" action="{{ url_for('apagar_selecionados') }}" id="deleteForm" style="margin: 0; display: inline-block;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-danger" id="deleteSelectedBtn" disabled>
+                <i class="fas fa-trash-alt"></i> Apagar Selecionados
+            </button>
+        </form>
+
+        <!-- Botão apagar todos -->
+        <form method="POST" action="{{ url_for('limpar_base') }}" id="clearAllForm" style="margin: 0; display: inline-block;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="acao" value="apagar_tudo">
+            <button type="button" class="btn btn-danger" id="clearAllDataBtn">
+                <i class="fas fa-exclamation-triangle"></i> Apagar Todos
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Script para confirmação FORA do container admin-actions -->
+<script nonce="{{ csp_nonce() }}">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Manipulador para botão de apagar tudo
+        const clearAllDataBtn = document.getElementById('clearAllDataBtn');
+        if (clearAllDataBtn) {
+            clearAllDataBtn.addEventListener('click', function() {
+                if (confirm('ATENÇÃO! Esta ação apagará TODOS os dados do sistema e não pode ser desfeita. Deseja continuar?')) {
+                    document.getElementById('clearAllForm').submit();
+                }
+            });
+        }
+    });
+</script>
+{% endif %}
+
+    <!-- Antes da tabela, adicione esta linha -->
+    {% if pacientes and pacientes|length > 0 %}
+    
+
+    <!-- Visualização em tabela -->
+    <div class="table-view active" id="tableView">
+        <table class="patients-table">
+            <thead>
+                {% if session['perfil'] == 'admin' %}
+                <th>
+                    <input type="checkbox" id="selectAll" class="select-all">
+                </th>
+                {% endif %}
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>Nascimento</th>
+                <th>Data da Última Consulta</th>
+                <th>Escore</th>
+                <th>Prioridade</th>
+                <th>Ações</th>
+            </thead>
+            <tbody>
+                {% for p in pacientes %}
+                {% set prioridade_class = p['prioridade']|lower|replace(' ', '-') %}
+                {% set posicao_atual = posicao_inicial + loop.index0 %}
+                <tr class="{{ prioridade_class }}" data-nome="{{ p['nome'] }}" data-prioridade="{{ p['prioridade'] }}">
+                    {% if session['perfil'] == 'admin' %}
+                    <td>
+                        <input type="checkbox" name="selecionados" value="{{ p['id'] }}" class="patient-checkbox">
+                    </td>
+                    {% endif %}
+                    <td>{{ posicao_atual }}</td>
+                    <td>
+                        {% if session['perfil'] != 'gestor' %}
+                        <a href="{{ url_for('nova_consulta', paciente_id=p['id']) }}">{{ p['nome'] }}</a>
+                        {% else %}
+                        {{ p['nome'] }}
+                        {% endif %}
+                    </td>
+                    <td>{{ p['nascimento'] }}</td>
+                    <td>{{ p['ultima_consulta']|default(p['data']) }}</td>
+                    <td>{{ p['escore'] }}</td>
+                    <td>
+                        <div class="priority-tag {{ p['prioridade']|lower|replace(' ', '-') }}">
+                            <span class="priority-circle {{ p['prioridade']|lower|replace(' ', '-') }}"></span>
+                            {{ p['prioridade'] }}
+                        </div>
+                    </td>
+                    <td class="table-actions">
+    <!-- Botão de informações -->
+    <button class="action-btn btn-info" 
+            data-contato="{{ p['contato']|default('Não informado')|e }}"
+            data-municipio="{{ p['municipio']|default('Não informado')|e }}"
+            data-primeira-consulta="{{ p['primeira_consulta']|default('Não informada')|e }}"
+            data-medico-assistente="{{ p['medico_assistente']|default('Não informado')|e }}"
+            title="Ver detalhes do paciente">
+        <i class="fas fa-info-circle"></i>
+    </button>
+    
+    <!-- Botão de agendamento -->
+    <button class="action-btn btn-agenda" 
+            data-paciente-id="{{ p['id'] }}" 
+            title="Agendar cirurgia">
+        <i class="fas fa-calendar-alt"></i>
+    </button>
+    
+    <!-- Botão de demanda judicial -->
+{% if session['perfil'] in ['medico', 'admin', 'gestor'] %}
+<button class="action-btn btn-judicial {% if p['prioridade'] == 'Demanda Judicial' %}active{% endif %}" 
+        data-paciente-id="{{ p['id'] }}" 
+        title="{% if p['prioridade'] == 'Demanda Judicial' %}Remover status de Demanda Judicial{% else %}Marcar como Demanda Judicial{% endif %}">
+    <i class="fas fa-exclamation"></i>
+</button>
+{% endif %}
+</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Paginação -->
+    <div class="pagination-container">
+        <ul class="pagination">
+            <li>
+                <a href="{{ url_for('painel', page=page-1) if page > 1 else '#' }}" 
+                   class="pagination-item {% if page <= 1 %}disabled{% endif %}">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+            
+            {% for p in range(1, total_pages+1) %}
+                {% if p == page %}
+                <li><a class="pagination-item active">{{ p }}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('painel', page=p) }}" class="pagination-item">{{ p }}</a></li>
+                {% endif %}
+            {% endfor %}
+            
+            <li>
+                <a href="{{ url_for('painel', page=page+1) if page < total_pages else '#' }}" 
+                   class="pagination-item {% if page >= total_pages %}disabled{% endif %}">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% else %}
+    <div class="no-data">
+        <i class="fas fa-clipboard-list"></i>
+        <h3 class="no-data-title">Nenhum paciente encontrado</h3>
+        <p class="no-data-text">Não há pacientes na lista de espera para cirurgia no momento.</p>
+        {% if session['perfil'] in ['medico', 'admin'] %}
+        <a href="{{ url_for('novo') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Adicionar Paciente
+        </a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<script nonce="{{ csp_nonce() }}">
+document.addEventListener('DOMContentLoaded', function() {
+    /* Código existente de inicialização */
+    
+    // Funcionalidade para gerenciar checkboxes e botão de apagar
+    const checkboxes = document.querySelectorAll('.patient-checkbox');
+    const selectAllCheckbox = document.getElementById('selectAll');
+    const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
+    const selectedCountSpan = document.getElementById('selectedCount');
+    
+    // Função para atualizar contagem e estado do botão
+    function updateSelectedCount() {
+        const checkedBoxes = document.querySelectorAll('.patient-checkbox:checked');
+        const count = checkedBoxes.length;
+        
+        if (selectedCountSpan) {
+            selectedCountSpan.textContent = count;
+        }
+        
+        if (deleteSelectedBtn) {
+            deleteSelectedBtn.disabled = count === 0;
+        }
+    }
+    
+    // Adicionar event listeners para checkboxes individuais
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', updateSelectedCount);
+    });
+    
+    // Funcionalidade para o checkbox "selecionar todos"
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener('change', function() {
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            updateSelectedCount();
+        });
+    }
+    
+    // Verificar se o formulário de exclusão existe
+    const deleteForm = document.getElementById('deleteForm');
+    if (deleteForm) {
+        deleteForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impedir o envio padrão
+            const checkedBoxes = document.querySelectorAll('.patient-checkbox:checked');
+            
+            if (checkedBoxes.length === 0) {
+                alert('Selecione pelo menos um paciente para excluir.');
+                return false;
+            }
+            
+            // Confirmação de exclusão
+            if (confirm('Tem certeza que deseja excluir os pacientes selecionados? Esta ação não pode ser desfeita.')) {
+                // Limpar inputs existentes para evitar duplicatas
+                deleteForm.querySelectorAll('input[name="selecionados"]').forEach(el => el.remove());
+                
+                // Adicionar os IDs selecionados ao formulário
+                checkedBoxes.forEach(function(checkbox) {
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = 'selecionados';
+                    hiddenInput.value = checkbox.value;
+                    deleteForm.appendChild(hiddenInput);
+                });
+                
+                // Enviar o formulário
+                deleteForm.submit();
+            }
+        });
+    }
+    
+    // Configurar evento de clique para os botões de agendamento
+    document.querySelectorAll('.btn-agenda').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const pacienteId = this.getAttribute('data-paciente-id');
+            const pacienteElement = this.closest('[data-nome]');
+            
+            if (!pacienteElement) {
+                console.error("Elemento paciente não encontrado");
+                return;
+            }
+            
+            const pacienteNome = pacienteElement.getAttribute('data-nome');
+            
+            // Mostrar modal de agendamento
+            Swal.fire({
+                title: 'Agendar Cirurgia',
+                html: `
+                    <p>Paciente: <strong>${pacienteNome}</strong></p>
+                    <div class="agendamento-form">
+                        <label for="dataCirurgia">Data da Cirurgia:</label>
+                        <input type="date" id="dataCirurgia" class="swal2-input" 
+                               min="${new Date().toISOString().split('T')[0]}" required>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirmar Agendamento',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#2196F3',
+                cancelButtonColor: '#6c757d',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    const dataCirurgia = document.getElementById('dataCirurgia').value;
+                    if (!dataCirurgia) {
+                        Swal.showValidationMessage('Por favor, selecione uma data');
+                        return false;
+                    }
+
+                    // Enviar dados para o backend
+                    return fetch('/agendar_cirurgia', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            paciente_id: pacienteId,
+                            data_cirurgia: dataCirurgia
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao agendar cirurgia');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(`Erro: ${error.message}`);
+                    });
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Agendado!',
+                        text: 'Cirurgia agendada com sucesso.',
+                        icon: 'success',
+                        confirmButtonColor: '#4CAF50'
+                    });
+                }
+            });
+        });
+    });
+    
+    // Configurar evento de clique para os botões de informações
+    document.querySelectorAll('.btn-info').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+        const pacienteElement = this.closest('[data-nome]');
+        
+        if (!pacienteElement) {
+            console.error("Elemento paciente não encontrado");
+            return;
+        }
+        
+        const pacienteNome = pacienteElement.getAttribute('data-nome');
+        const contato = this.getAttribute('data-contato');
+        const municipio = this.getAttribute('data-municipio');
+        const primConsulta = this.getAttribute('data-primeira-consulta');
+        const medicoAssist = this.getAttribute('data-medico-assistente');
+        
+        // Mostrar modal de informações
+        Swal.fire({
+            title: 'Dados do Paciente',
+            html: `
+                <div class="dados-paciente">
+                    <p><strong>Nome:</strong> ${pacienteNome}</p>
+                    <p><strong>Contato:</strong> ${contato}</p>
+                    <p><strong>Município:</strong> ${municipio}</p>
+                    <p><strong>Primeira Consulta:</strong> ${primConsulta}</p>
+                    <p><strong>Médico Assistente:</strong> ${medicoAssist}</p>
+                </div>
+            `,
+            confirmButtonText: 'Fechar',
+            confirmButtonColor: '#2196F3'
+        });
+    });
+});     
+// Configurar evento para os botões de demanda judicial
+document.querySelectorAll('.btn-judicial').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const pacienteId = this.getAttribute('data-paciente-id');
+        const pacienteElement = this.closest('[data-nome]');
+        
+        if (!pacienteElement) {
+            console.error("Elemento paciente não encontrado");
+            return;
+        }
+        
+        const pacienteNome = pacienteElement.getAttribute('data-nome');
+        const prioridade = pacienteElement.getAttribute('data-prioridade');
+        const isDemandaJudicial = prioridade === 'Demanda Judicial';
+        
+        // Mensagem e título baseados no status atual
+        const titulo = isDemandaJudicial ? 'Remover Demanda Judicial' : 'Demanda Judicial';
+        const mensagem = isDemandaJudicial 
+            ? `<p>Deseja remover o status de demanda judicial de <strong>${pacienteNome}</strong>?</p>
+               <p class="text-muted"><small>O paciente retornará à sua classificação de prioridade anterior.</small></p>`
+            : `<p>Deseja marcar o paciente <strong>${pacienteNome}</strong> como demanda judicial?</p>
+               <p class="text-warning"><small>Esta ação dará prioridade máxima ao paciente na fila de espera.</small></p>`;
+        
+        // Cores e ícones diferentes
+        const confirmBtnColor = isDemandaJudicial ? '#3085d6' : '#d33';
+        const confirmBtnText = isDemandaJudicial ? 'Sim, remover status' : 'Sim, é Demanda Judicial';
+        const icon = isDemandaJudicial ? 'info' : 'warning';
+        
+        // Mostrar confirmação
+        Swal.fire({
+            title: titulo,
+            html: mensagem,
+            icon: icon,
+            showCancelButton: true,
+            confirmButtonText: confirmBtnText,
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: confirmBtnColor,
+            cancelButtonColor: '#6c757d',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Criar formulário para envio com CSRF token
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/marcar_demanda_judicial';
+                
+                // Adicionar CSRF token
+                const csrfToken = document.createElement('input');
+                csrfToken.type = 'hidden';
+                csrfToken.name = 'csrf_token';
+                csrfToken.value = '{{ csrf_token() }}';
+                form.appendChild(csrfToken);
+                
+                // Adicionar ID do paciente
+                const idInput = document.createElement('input');
+                idInput.type = 'hidden';
+                idInput.name = 'paciente_id';
+                idInput.value = pacienteId;
+                form.appendChild(idInput);
+                
+                // Adicionar flag de remover se for o caso
+                if (isDemandaJudicial) {
+                    const removerInput = document.createElement('input');
+                    removerInput.type = 'hidden';
+                    removerInput.name = 'remover';
+                    removerInput.value = 'true';
+                    form.appendChild(removerInput);
+                }
+                
+                // Adicionar o form ao documento e enviar
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    });
+});
+});
+</script>
+{% endblock %}

@@ -1,0 +1,605 @@
+2025-04-10 10:06:24,581 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-10 10:06:24,583 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-10 10:06:24,594 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 10:06:27,928 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 10:06:27,938 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 10:06:27,971 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:06:27] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 10:06:28,024 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:06:28] "GET / HTTP/1.1" 200 -
+2025-04-10 10:06:28,430 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:06:28] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 10:07:32,911 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:07:32] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 10:07:33,321 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:07:33] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:07:33,574 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:07:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:07:44,031 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:07:44] "GET /nova_consulta/3 HTTP/1.1" 200 -
+2025-04-10 10:07:44,283 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:07:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:08:17,136 - app - INFO - Nova consulta registrada para paciente 3
+2025-04-10 10:08:17,137 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:17] "[32mPOST /nova_consulta/3 HTTP/1.1[0m" 302 -
+2025-04-10 10:08:17,232 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:17] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:08:17,442 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:08:43,185 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:43] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 10:08:43,382 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:08:46,680 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:46] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:08:46,886 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:08:54,054 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:54] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 10:08:54,366 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:54] "GET / HTTP/1.1" 200 -
+2025-04-10 10:08:55,020 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:08:55] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 10:09:03,231 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:09:03] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 10:09:03,352 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:09:03] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:09:03,867 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:09:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:09:17,618 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:09:17] "GET /painel?page=2 HTTP/1.1" 200 -
+2025-04-10 10:09:17,876 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:09:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:43:23,970 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:23] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:43:24,167 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:43:27,135 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:27] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 10:43:27,374 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:43:28,871 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:28] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 10:43:29,020 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:43:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:46:24,875 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 10:46:25,639 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 10:47:34,965 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 10:47:37,707 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 10:47:59,837 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 10:48:02,517 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 10:48:02,522 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 10:49:17,576 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:49:17] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 10:49:17,728 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:49:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:49:23,659 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:49:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:50:04,882 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:50:04] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 10:50:04,953 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:50:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:50:07,536 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:50:07] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:50:07,786 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:50:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:51:45,763 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:45] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:51:45,872 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:51:48,695 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:48] "[35m[1mGET /arquivo HTTP/1.1[0m" 500 -
+2025-04-10 10:51:48,944 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:48] "[36mGET /arquivo?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:51:49,086 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:49] "[36mGET /arquivo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-10 10:51:49,453 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:49] "GET /arquivo?__debugger__=yes&cmd=resource&f=console.png&s=NSo2cPxMk9Qs62ccnqg4 HTTP/1.1" 200 -
+2025-04-10 10:51:49,504 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:49] "[36mGET /arquivo?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-10 10:51:49,722 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:51:49] "[36mGET /arquivo?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-10 10:53:21,560 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:21] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 10:53:21,625 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:53:25,277 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:25] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:53:25,562 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:53:48,922 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:48] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 10:53:49,168 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:53:52,962 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:52] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:53:53,252 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:53:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:57:05,800 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:57:05] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:57:05,867 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:57:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:57:07,406 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:57:07] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:57:07,703 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:57:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:58:49,584 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:49] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:58:49,654 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:58:51,208 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:51] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:58:51,508 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:58:52,790 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:52] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:58:52,889 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:58:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 10:59:45,232 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:59:45] "GET /painel HTTP/1.1" 200 -
+2025-04-10 10:59:45,451 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 10:59:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:00:10,806 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:00:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:04:36,164 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 11:04:37,014 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 11:04:38,859 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 11:05:12,895 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 11:05:20,873 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 11:05:22,428 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 11:05:22,432 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 11:05:25,081 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:05:25] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:05:25,247 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:05:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:09:39,248 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:09:39] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:09:39,306 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:09:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:09:40,178 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:09:40] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:09:40,457 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:09:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:13:27,087 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:13:27] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:13:27,149 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:13:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:15:38,765 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:38] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:15:38,831 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:15:47,821 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:47] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:15:48,022 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:15:49,796 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:49] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:15:50,052 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:15:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:05,138 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:05] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:18:05,212 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:08,760 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:08] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:18:09,071 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:11,291 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:11] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:18:11,517 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:12,619 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:12] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:18:12,921 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:15,109 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:15] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:18:15,337 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:18:24,097 - app - INFO - Dados recebidos para agendamento: {'paciente_id': '3', 'data_cirurgia': '2025-05-19'}
+2025-04-10 11:18:24,104 - app - INFO - Data formatada: 19/05/2025
+2025-04-10 11:18:24,109 - app - INFO - Novo agendamento criado para paciente 3
+2025-04-10 11:18:24,117 - app - INFO - Cirurgia agendada com sucesso para o paciente (ID: 3) para 19/05/2025
+2025-04-10 11:18:24,118 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:24] "POST /agendar_cirurgia HTTP/1.1" 200 -
+2025-04-10 11:18:26,874 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:26] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:18:27,122 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:18:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:19:41,697 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:19:41] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:19:41,935 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:19:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:23:28,757 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:28] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:23:28,811 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:23:31,315 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:31] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:23:31,575 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:23:34,785 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:34] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:23:34,998 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:23:38,759 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:23:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:28:40,763 - app - ERROR - Erro ao carregar agenda: No filter named 'first.data_cirurgia' found.
+2025-04-10 11:28:40,772 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:40] "[32mGET /agenda HTTP/1.1[0m" 302 -
+2025-04-10 11:28:40,944 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:40] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:28:41,039 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:28:47,580 - app - ERROR - Erro ao carregar agenda: No filter named 'first.data_cirurgia' found.
+2025-04-10 11:28:47,581 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:47] "[32mGET /agenda HTTP/1.1[0m" 302 -
+2025-04-10 11:28:47,815 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:47] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:28:47,892 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:28:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:30:33,456 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:30:33] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:30:33,669 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:30:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:30:36,724 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:30:36] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:30:37,011 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:30:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:02,903 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:02] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 11:31:03,128 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:03] "GET / HTTP/1.1" 200 -
+2025-04-10 11:31:03,198 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:03] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 11:31:08,482 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:08] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 11:31:08,523 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:08] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:31:08,600 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:11,338 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:11] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:31:11,558 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:17,199 - app - INFO - Realização de cirurgia cancelada para paciente Tamires Alves de Lucena (ID: 1)
+2025-04-10 11:31:17,201 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:17] "[32mGET /cancelar_realizacao/1 HTTP/1.1[0m" 302 -
+2025-04-10 11:31:17,484 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:17] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:31:17,884 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:20,091 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:20] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:31:20,385 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:23,321 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:23] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:31:23,532 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:28,180 - app - INFO - Agendamento cancelado (ID: 7)
+2025-04-10 11:31:28,181 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:28] "[32mGET /cancelar_agendamento/7 HTTP/1.1[0m" 302 -
+2025-04-10 11:31:28,456 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:28] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:31:28,838 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:31,324 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:31] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:31:31,517 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:31:33,552 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:33] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:31:33,763 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:31:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:35:04,246 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:04] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:35:04,326 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:35:06,088 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:06] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:35:06,343 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:35:09,896 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:09] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:35:10,114 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:35:15,320 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:15] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:35:15,612 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:35:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:11,253 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:11] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:38:11,314 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:13,136 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:13] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:38:13,386 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:14,685 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:14] "GET /agenda HTTP/1.1" 200 -
+2025-04-10 11:38:14,900 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:17,183 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:17] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 11:38:17,476 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:18,860 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:18] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:38:19,066 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:38:29,209 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:29] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 11:38:29,527 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:29] "GET / HTTP/1.1" 200 -
+2025-04-10 11:38:29,897 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:29] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 11:38:41,333 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:41] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 11:38:41,418 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:41] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:38:41,795 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:38:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:40:46,968 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:46] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:40:47,038 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:40:52,831 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:52] "GET /editar_usuarios HTTP/1.1" 200 -
+2025-04-10 11:40:53,100 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:40:57,354 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:57] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:40:57,581 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:40:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:41:00,727 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:41:00] "GET /criar_usuario HTTP/1.1" 200 -
+2025-04-10 11:41:01,012 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:41:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:43:33,947 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:33] "GET /criar_usuario HTTP/1.1" 200 -
+2025-04-10 11:43:34,015 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:43:50,480 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:50] "[32mPOST /criar_usuario HTTP/1.1[0m" 302 -
+2025-04-10 11:43:50,521 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:50] "GET /editar_usuarios HTTP/1.1" 200 -
+2025-04-10 11:43:50,903 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:43:55,500 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:55] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 11:43:55,801 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:55] "GET / HTTP/1.1" 200 -
+2025-04-10 11:43:56,189 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:56] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 11:43:59,823 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:59] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 11:43:59,944 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:43:59] "GET /trocar_senha HTTP/1.1" 200 -
+2025-04-10 11:44:00,316 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:44:40,824 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:40] "[32mPOST /trocar_senha HTTP/1.1[0m" 302 -
+2025-04-10 11:44:41,111 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:41] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:44:41,504 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:44:44,678 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:44] "GET /novo HTTP/1.1" 200 -
+2025-04-10 11:44:44,965 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:44:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:45:15,246 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:15] "[32mPOST /novo HTTP/1.1[0m" 302 -
+2025-04-10 11:45:15,287 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:15] "GET /nova_consulta/83 HTTP/1.1" 200 -
+2025-04-10 11:45:15,481 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:45:28,309 - app - INFO - Nova consulta registrada para paciente 83
+2025-04-10 11:45:28,310 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:28] "[32mPOST /nova_consulta/83 HTTP/1.1[0m" 302 -
+2025-04-10 11:45:28,351 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:28] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:45:28,530 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:45:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:46:38,377 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:38] "GET /novo HTTP/1.1" 200 -
+2025-04-10 11:46:39,283 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:39] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:46:40,344 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:40] "[35m[1mGET /trocar_senha HTTP/1.1[0m" 500 -
+2025-04-10 11:46:40,519 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:40] "GET /trocar_senha?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-04-10 11:46:40,721 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:40] "GET /trocar_senha?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-04-10 11:46:41,095 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:41] "GET /trocar_senha?__debugger__=yes&cmd=resource&f=console.png&s=mPRH9AQVJP0hubeYFrLI HTTP/1.1" 200 -
+2025-04-10 11:46:41,356 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:46:41] "GET /trocar_senha?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-04-10 11:47:51,198 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:47:51] "GET /trocar_senha HTTP/1.1" 200 -
+2025-04-10 11:47:51,282 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:47:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:48:04,554 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:48:04] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:48:04,849 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:48:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:48:08,333 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:48:08] "GET /nova_consulta/83 HTTP/1.1" 200 -
+2025-04-10 11:48:08,551 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:48:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:51:41,353 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:51:41] "GET /nova_consulta/83 HTTP/1.1" 200 -
+2025-04-10 11:51:41,424 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:51:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:52:09,500 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:09] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:52:09,787 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:52:18,563 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:18] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 11:52:18,777 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:18] "GET / HTTP/1.1" 200 -
+2025-04-10 11:52:18,836 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:18] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 11:52:24,085 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:24] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 11:52:24,115 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:24] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:52:24,181 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 11:52:32,704 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:32] "[32mPOST /apagar_selecionados HTTP/1.1[0m" 302 -
+2025-04-10 11:52:32,733 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:32] "GET /painel HTTP/1.1" 200 -
+2025-04-10 11:52:32,950 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 11:52:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:06:21,372 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:21] "[32mPOST /apagar_selecionados HTTP/1.1[0m" 302 -
+2025-04-10 12:06:21,466 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:21] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:06:21,589 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:06:39,234 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:39] "[32mPOST /apagar_selecionados HTTP/1.1[0m" 302 -
+2025-04-10 12:06:39,278 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:39] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:06:39,455 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:06:46,541 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:46] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:06:46,749 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:06:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:13:39,231 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:13:40,113 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:13:51,952 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:13:58,801 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:14:00,047 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:14:00,053 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:14:13,229 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:14:13,422 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:14:14,613 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:14:14,616 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:15,687 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:15,898 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:22,815 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:23,937 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:23,939 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:27,007 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:27,138 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:28,123 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:28,126 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:30,175 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:30,317 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:31,230 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:31,235 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:48,486 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:48,643 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:49,675 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:49,681 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:50,733 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:50,953 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:51,946 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:51,949 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:15:57,021 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:15:57,175 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:15:58,106 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:15:58,112 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:16:08,252 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:16:08,407 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:11,153 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:13,137 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:18,800 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:20,652 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:23,201 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:25,856 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:27,546 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:32,225 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:38,213 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:40,790 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:42,622 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:44,546 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:16:46,178 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:24,304 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:25,514 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:18:25,519 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:18:43,819 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:18:44,025 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:48,805 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:51,492 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:53,311 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:55,157 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:57,001 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:18:58,742 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:20:26,905 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:20:28,474 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:20:28,477 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:20:30,651 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:20:30] "[35m[1mGET /painel HTTP/1.1[0m" 500 -
+2025-04-10 12:20:30,823 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:20:30] "[36mGET /painel?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:20:30,846 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:20:30] "[36mGET /painel?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-10 12:20:31,380 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:20:31] "GET /painel?__debugger__=yes&cmd=resource&f=console.png&s=84oh1dvH6dkAIBMtGktN HTTP/1.1" 200 -
+2025-04-10 12:20:31,632 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:20:31] "[36mGET /painel?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-10 12:22:06,322 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:06] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:22:06,421 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:22:19,376 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:19] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 12:22:19,614 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:19] "GET / HTTP/1.1" 200 -
+2025-04-10 12:22:19,691 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:19] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 12:22:25,017 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:25] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 12:22:25,043 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:25] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:22:25,122 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:22:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:27:13,414 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:27:13,574 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:27:17,366 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:27:37,281 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:27:38,780 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:27:38,788 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:27:40,071 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:27:40] "[35m[1mGET /painel HTTP/1.1[0m" 500 -
+2025-04-10 12:27:40,194 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:27:40] "[36mGET /painel?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:27:40,250 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:27:40] "[36mGET /painel?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-04-10 12:27:40,636 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:27:40] "GET /painel?__debugger__=yes&cmd=resource&f=console.png&s=6GVIj9UFgUws0kmIBhxQ HTTP/1.1" 200 -
+2025-04-10 12:27:40,905 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:27:40] "[36mGET /painel?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-04-10 12:27:58,045 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:27:58,231 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:28:00,269 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:28:01,461 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:28:01,464 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:31:12,374 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:31:12] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:31:12,529 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:31:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:32:30,908 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:32:30] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:32:30,979 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:32:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:33:12,562 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:33:12] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:33:12,761 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:33:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:33:24,703 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:33:24] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:33:24,761 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:33:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:34:18,517 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:34:18] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:34:18,766 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:34:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:34:33,320 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:34:33] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:34:33,379 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:34:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:35:05,415 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:05] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:35:05,663 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:35:26,042 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:26] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:35:26,105 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:35:37,608 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:37] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:35:37,810 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:35:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:38:23,896 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:23] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:38:23,968 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:38:43,520 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:43] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:38:43,772 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:38:49,832 - app - INFO - Paciente TATIANE FREIRE BERTO (ID: 3) marcado como Demanda Judicial
+2025-04-10 12:38:49,837 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:49] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 12:38:49,899 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:49] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:38:50,038 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:38:55,448 - app - INFO - Paciente ANA LUIZA DE OLIVEIRA DA  CRUZ (ID: 44) marcado como Demanda Judicial
+2025-04-10 12:38:55,449 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:55] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 12:38:55,526 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:55] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:38:55,668 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:38:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:42:57,686 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:42:58,130 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:42:59,350 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:42:59,353 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:43:02,415 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:43:02,596 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:43:03,782 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:43:03,787 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:43:44,685 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:43:44,915 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:43:47,182 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:43:47,188 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:43:49,252 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 12:43:49,465 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 12:43:51,238 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 12:43:51,247 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 12:45:13,048 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:13] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:45:13,242 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:45:18,101 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:18] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 12:45:18,391 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:18] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:45:18,777 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:45:25,149 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:25] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 12:45:25,437 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:25] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:45:25,809 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:45:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 12:46:36,307 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:46:36] "GET /painel HTTP/1.1" 200 -
+2025-04-10 12:46:36,439 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 12:46:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:13:44,897 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:13:44] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 13:13:44,928 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:13:44] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:13:45,151 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:13:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:14:40,525 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:14:40] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 13:14:40,553 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:14:40] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:14:40,777 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:14:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:16:33,629 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:16:34,358 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:16:36,374 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:16:36,379 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:16:38,420 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:16:38,620 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:16:39,645 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:16:39,649 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:17:36,732 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:17:36,961 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:17:45,038 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:17:45,956 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:17:45,959 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:18:04,303 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:04] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:18:04,560 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:18:07,869 - app - INFO - Tentando remover status judicial. Valores: prioridade_anterior=None, escore_anterior=None
+2025-04-10 13:18:07,872 - app - INFO - Status de demanda judicial removido de TATIANE FREIRE BERTO (valores originais não encontrados)
+2025-04-10 13:18:07,879 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:07] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 13:18:08,140 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:08] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:18:08,515 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:18:15,032 - app - INFO - Tentando remover status judicial. Valores: prioridade_anterior=None, escore_anterior=None
+2025-04-10 13:18:15,035 - app - INFO - Status de demanda judicial removido de ANA LUIZA DE OLIVEIRA DA  CRUZ (valores originais não encontrados)
+2025-04-10 13:18:15,040 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:15] "[32mPOST /marcar_demanda_judicial HTTP/1.1[0m" 302 -
+2025-04-10 13:18:15,303 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:15] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:18:15,683 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:18:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:20:24,461 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:20:24,795 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:20:25,916 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:20:25,919 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:20:57,487 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:20:57,847 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:21:00,341 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:21:00,344 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:21:03,388 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:21:03,599 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:21:04,800 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:21:04,806 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:22:18,971 - werkzeug - INFO -  * Detected change in 'D:\\Users\\phgut\\Downloads\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-10 13:22:19,175 - werkzeug - INFO -  * Restarting with stat
+2025-04-10 13:22:20,541 - werkzeug - WARNING -  * Debugger is active!
+2025-04-10 13:22:20,544 - werkzeug - INFO -  * Debugger PIN: 141-625-871
+2025-04-10 13:22:27,059 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:27] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:22:27,216 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:22:29,769 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:29] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:22:30,068 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:22:31,942 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:31] "GET /arquivo HTTP/1.1" 200 -
+2025-04-10 13:22:32,117 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-10 13:22:34,552 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:34] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-10 13:22:34,853 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:34] "GET / HTTP/1.1" 200 -
+2025-04-10 13:22:35,247 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:35] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-10 13:22:41,065 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:41] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-10 13:22:41,160 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:41] "GET /painel HTTP/1.1" 200 -
+2025-04-10 13:22:41,535 - werkzeug - INFO - 127.0.0.1 - - [10/Apr/2025 13:22:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:30:18,553 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:30:18,554 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:30:18,555 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:30:18,645 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:30:18,654 - cleanup_tasks - INFO - Cleanup completed. Removed 9 temporary files.
+2025-04-15 15:30:20,036 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.71:5000
+2025-04-15 15:30:20,036 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 15:30:20,046 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:30:29,149 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:30:29,149 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:30:29,150 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:30:29,192 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:30:29,193 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:30:29,250 - werkzeug - WARNING -  * Debugger is active!
+2025-04-15 15:30:29,258 - werkzeug - INFO -  * Debugger PIN: 105-547-724
+2025-04-15 15:30:36,736 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:30:36] "GET / HTTP/1.1" 200 -
+2025-04-15 15:30:36,983 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:30:36] "GET /static/logo.png HTTP/1.1" 200 -
+2025-04-15 15:30:37,123 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:30:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-15 15:31:54,126 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:31:54] "POST / HTTP/1.1" 200 -
+2025-04-15 15:31:54,463 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:31:54] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:32:01,590 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:32:01] "POST / HTTP/1.1" 200 -
+2025-04-15 15:32:01,928 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:32:01] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:32:07,996 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:32:07] "POST / HTTP/1.1" 200 -
+2025-04-15 15:32:08,057 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:32:08] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:32:14,659 - werkzeug - INFO -  * Detected change in 'C:\\Users\\User\\Downloads\\fila_escoliose_webapp_final (3)\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-15 15:32:15,181 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:32:58,238 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:32:58,239 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:32:58,239 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:32:58,275 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:32:58,276 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:32:58,378 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.71:5000
+2025-04-15 15:32:58,378 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 15:32:58,382 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:33:02,313 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:33:02,314 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:33:02,314 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:33:02,345 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:33:02,346 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:33:02,431 - werkzeug - WARNING -  * Debugger is active!
+2025-04-15 15:33:02,444 - werkzeug - INFO -  * Debugger PIN: 105-547-724
+2025-04-15 15:33:02,754 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:33:02] "POST / HTTP/1.1" 200 -
+2025-04-15 15:33:02,977 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:33:02] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:34:38,068 - werkzeug - INFO -  * Detected change in 'C:\\Users\\User\\Downloads\\fila_escoliose_webapp_final (3)\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-15 15:34:38,980 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:37:57,611 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:37:57,613 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:37:57,614 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:37:57,727 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:37:57,728 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:37:58,003 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.71:5000
+2025-04-15 15:37:58,004 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 15:37:58,014 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:38:02,737 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:38:02,738 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:38:02,739 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:38:02,769 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:38:02,770 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:38:02,835 - werkzeug - WARNING -  * Debugger is active!
+2025-04-15 15:38:02,843 - werkzeug - INFO -  * Debugger PIN: 105-547-724
+2025-04-15 15:38:13,730 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:13] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:13,914 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:13] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:38:33,612 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:33] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:33,915 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:33] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:38:39,409 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:39] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:39,570 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:38:45,941 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:45] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:46,220 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:46] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:38:52,244 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:52] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:52,292 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:52] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:38:57,109 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:57] "POST / HTTP/1.1" 200 -
+2025-04-15 15:38:57,416 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:38:57] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:39:02,271 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:39:02] "POST / HTTP/1.1" 200 -
+2025-04-15 15:39:02,316 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:39:02] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:39:53,394 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:39:53] "POST / HTTP/1.1" 200 -
+2025-04-15 15:39:53,716 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:39:53] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:40:00,054 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:00] "POST / HTTP/1.1" 200 -
+2025-04-15 15:40:00,100 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:00] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:40:31,399 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:31] "POST / HTTP/1.1" 200 -
+2025-04-15 15:40:31,454 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:31] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:40:36,164 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:36] "POST / HTTP/1.1" 200 -
+2025-04-15 15:40:36,495 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:36] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:40:44,177 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:44] "POST / HTTP/1.1" 200 -
+2025-04-15 15:40:44,228 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:40:44] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:41:37,300 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:41:37] "POST / HTTP/1.1" 200 -
+2025-04-15 15:41:37,604 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:41:37] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:41:43,423 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:41:43] "POST / HTTP/1.1" 200 -
+2025-04-15 15:41:43,537 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:41:43] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:42:38,842 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:42:38] "POST / HTTP/1.1" 200 -
+2025-04-15 15:42:39,156 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:42:39] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-15 15:44:27,303 - werkzeug - INFO -  * Detected change in 'C:\\Users\\User\\Downloads\\fila_escoliose_webapp_final (3)\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-15 15:44:27,985 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:44:32,772 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:44:32,773 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:44:32,773 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:44:32,805 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:44:32,806 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:44:32,808 - __main__ - INFO - Criando usuário administrador padrão
+2025-04-15 15:44:33,115 - __main__ - INFO - Usuário administrador padrão criado com sucesso
+2025-04-15 15:44:33,178 - werkzeug - WARNING -  * Debugger is active!
+2025-04-15 15:44:33,189 - werkzeug - INFO -  * Debugger PIN: 105-547-724
+2025-04-15 15:44:52,600 - werkzeug - INFO -  * Detected change in 'C:\\Users\\User\\Downloads\\fila_escoliose_webapp_final (3)\\fila_escoliose_webapp_final\\app.py', reloading
+2025-04-15 15:44:53,058 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:45:02,656 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:45:02,657 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:45:02,657 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:45:02,690 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:45:02,690 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:45:02,939 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.71:5000
+2025-04-15 15:45:02,940 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 15:45:02,954 - werkzeug - INFO -  * Restarting with stat
+2025-04-15 15:45:06,825 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-15 15:45:06,825 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-15 15:45:06,826 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-15 15:45:06,858 - cleanup_tasks - INFO - Cleaning temporary files from C:\Users\User\Downloads\fila_escoliose_webapp_final (3)\fila_escoliose_webapp_final\tmp older than 24 hours
+2025-04-15 15:45:06,858 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-15 15:45:06,914 - werkzeug - WARNING -  * Debugger is active!
+2025-04-15 15:45:06,921 - werkzeug - INFO -  * Debugger PIN: 105-547-724
+2025-04-15 15:45:28,574 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:28] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-15 15:45:28,665 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:28] "GET /painel HTTP/1.1" 200 -
+2025-04-15 15:45:28,833 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:28] "GET /static/style.css HTTP/1.1" 200 -
+2025-04-15 15:45:36,784 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:36] "GET /editar_usuarios HTTP/1.1" 200 -
+2025-04-15 15:45:36,888 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:45:45,597 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:45] "GET /painel HTTP/1.1" 200 -
+2025-04-15 15:45:45,898 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:45:50,906 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:50] "GET /agenda HTTP/1.1" 200 -
+2025-04-15 15:45:50,995 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:45:52,707 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:52] "GET /painel HTTP/1.1" 200 -
+2025-04-15 15:45:53,017 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:45:55,556 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:55] "GET /arquivo HTTP/1.1" 200 -
+2025-04-15 15:45:55,627 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-15 15:45:58,954 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:58] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-15 15:45:59,285 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:59] "GET / HTTP/1.1" 200 -
+2025-04-15 15:45:59,351 - werkzeug - INFO - 127.0.0.1 - - [15/Apr/2025 15:45:59] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -

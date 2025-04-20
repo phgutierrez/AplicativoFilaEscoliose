@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style nonce="{{ csp_nonce() }}">
+    .users-container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .search-container {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        background: #f5f5f5;
+        padding: 1rem;
+        border-radius: 6px;
+    }
+
+    .search-input {
+        flex: 1;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.9rem;
+    }
+
+    .users-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .user-card {
+        background: #f8f9fa;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        padding: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    .user-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .user-avatar {
+        background: #e9ecef;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #495057;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+    }
+
+    .actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+    }
+
+    .btn-primary { 
+        background: #4CAF50; 
+        color: white; 
+    }
+
+    .btn-danger { 
+        background: #f44336; 
+        color: white; 
+    }
+
+    .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    .badge-admin { background: #ffd700; color: #000; }
+    .badge-medico { background: #4CAF50; color: #fff; }
+    .badge-gestor { background: #2196F3; color: #fff; }
+
+    .password-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        color: #666;
+        padding: 5px;
+    }
+
+    .toggle-password:hover {
+        color: #4CAF50;
+    }
+
+    .form-text {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 0.25rem;
+    }
+</style>
+
+<div class="users-container">
+    <div class="page-header">
+        <h2><i class="fas fa-users-cog"></i> Gerenciar Usuários</h2>
+        <a href="{{ url_for('painel') }}" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Voltar ao Painel
+        </a>
+    </div>
+
+    <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="text" 
+               id="searchUsers" 
+               class="search-input" 
+               placeholder="Buscar usuários..."
+               onkeyup="filterUsers()">
+    </div>
+
+    <div class="users-grid">
+        {% for usuario in usuarios %}
+        <div class="user-card" data-username="{{ usuario['usuario'] }}">
+            <div class="user-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h3>{{ usuario['usuario'] }}</h3>
+                    <span class="badge badge-{{ usuario['perfil'] }}">
+                        {{ usuario['perfil']|title }}
+                    </span>
+                </div>
+            </div>
+
+            <form method="POST" action="{{ url_for('atualizar_usuario', user_id=usuario['id']) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                
+                <div class="form-group">
+                    <label>Perfil:</label>
+                    <select name="perfil" class="form-control" required>
+                        <option value="admin" {% if usuario['perfil'] == 'admin' %}selected{% endif %}>Administrador</option>
+                        <option value="medico" {% if usuario['perfil'] == 'medico' %}selected{% endif %}>Médico</option>
+                        <option value="gestor" {% if usuario['perfil'] == 'gestor' %}selected{% endif %}>Gestor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nova Senha:</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" 
+                               name="nova_senha" 
+                               class="form-control" 
+                               id="senha_{{ usuario['id'] }}"
+                               placeholder="Digite a nova senha">
+                        <i class="fas fa-eye toggle-password" 
+                           onclick="togglePassword('senha_{{ usuario['id'] }}')"
+                           title="Mostrar/ocultar senha"></i>
+                    </div>
+                    <small class="form-text">
+                        Requisitos: 8+ caracteres, maiúsculas, minúsculas, números e símbolos
+                    </small>
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                    
+                    <a href="{{ url_for('excluir_usuario', user_id=usuario['id']) }}" 
+                       class="btn btn-danger"
+                       onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
+                        <i class="fas fa-trash"></i> Excluir
+                    </a>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script nonce="{{ csp_nonce() }}">
+function filterUsers() {
+    const searchText = document.getElementById('searchUsers').value.toLowerCase();
+    const userCards = document.querySelectorAll('.user-card');
+    
+    userCards.forEach((card) => {
+        const username = card.dataset.username.toLowerCase();
+        card.style.display = username.includes(searchText) ? 'block' : 'none';
+    });
+}
+
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const icon = input.nextElementSibling;
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+}
+</script>
+
+{% endblock %}

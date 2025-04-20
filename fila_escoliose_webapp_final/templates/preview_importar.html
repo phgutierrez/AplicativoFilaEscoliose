@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>👁️ Prévia da Importação</h2>
+
+<form method="POST" action="{{ url_for('confirmar_importacao') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <table>
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Nascimento</th>
+                <th>Data Consulta</th>
+                <th>Grau</th>
+                <th>Escore</th>
+                <th>Prioridade</th>
+                <th>Contato</th>
+                <th>Município</th>
+                <th>Médico Assistente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in dados %}
+            <tr>
+                <td>{{ d.nome }}</td>
+                <td>{{ d.nascimento }}</td>
+                <td>{{ d.data_consulta }}</td>
+                <td>{{ d.GRAU }}</td>
+                <td>{{ d.ESCORE }}</td>
+                <td>{{ d.PRIORIDADE }}</td>
+                <td>{{ d.contato }}</td>
+                <td>{{ d.municipio }}</td>
+                <td>{{ d.medico_assistente }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="submit">✅ Confirmar Importação</button>
+    <a href="{{ url_for('painel') }}">❌ Cancelar</a>
+</form>
+
+{% endblock %}

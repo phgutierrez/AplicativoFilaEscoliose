@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{{ url_for('novo') }}">➕ Novo Paciente</a>
+<form method="get" action="{{ url_for('index') }}">
+    <input type="text" name="busca" placeholder="Buscar por nome" value="{{ request.args.get('busca', '') }}">
+    <button type="submit">🔍 Buscar</button>
+    <a href="{{ url_for('exportar_excel') }}">📥 Exportar Excel</a>
+</form>
+<table>
+    <thead>
+        <tr><th>Posição</th><th>Nome</th><th>Nascimento</th><th>Escore</th><th>Prioridade</th><th>Última Consulta</th></tr>
+    </thead>
+    <tbody>
+    {% for p in pacientes %}
+        <tr class="prioridade-{{ p[5]|lower|replace(' ', '-') }}">
+            <td>{{ p[0] }}</td>
+            <td><a href="{{ url_for('paciente', paciente_id=p[1]) }}">{{ p[2] }}</a></td>
+            <td>{{ p[3] }}</td>
+            <td>{{ p[4] }}</td>
+            <td>{{ p[5] }}</td>
+            <td>{{ p[6] }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,688 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style nonce="{{ csp_nonce() }}">
+    .archive-container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 1rem;
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .header-icon {
+        background: #e3f2fd;
+        color: #2196F3;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+    
+    .header-title {
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.5rem;
+    }
+    
+    .header-subtitle {
+        margin: 5px 0 0;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        font-weight: normal;
+    }
+    
+    .filter-card {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid #2196F3;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-card:hover {
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.1);
+    }
+    
+    .filter-title {
+        margin: 0 0 1rem;
+        font-size: 1.1rem;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .filter-title i {
+        color: #2196F3;
+    }
+
+    .filter-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        align-items: end;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-label {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #34495e;
+    }
+
+    .form-control {
+        padding: 0.85rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #fff;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #2196F3;
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    }
+    
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0.85rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 120px;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background: #2196F3;
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .btn-danger {
+        background: #f44336;
+        color: white;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .btn-primary:hover { background: #1e88e5; }
+    .btn-secondary:hover { background: #dde1e3; }
+    .btn-danger:hover { background: #e53935; }
+    
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        background: white;
+    }
+    
+    .data-table th, 
+    .data-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .data-table th {
+        background: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    
+    .data-table tr:hover {
+        background: #f8f9fa;
+    }
+
+    .checkbox-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: white;
+    }
+    
+    .custom-checkbox:hover {
+        border-color: #2196F3;
+    }
+    
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+    }
+    
+    input[type="checkbox"]:checked + .custom-checkbox {
+        background: #2196F3;
+        border-color: #2196F3;
+    }
+    
+    input[type="checkbox"]:checked + .custom-checkbox:after {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    
+    .prioridade-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    .alta-prioridade {
+        background: #ffebee;
+        color: #c62828;
+    }
+    
+    .prioridade-intermediaria {
+        background: #fff8e1;
+        color: #f57f17;
+    }
+    
+    .prioridade-eletiva {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+    
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        gap: 0.5rem;
+    }
+    
+    .pagination-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        color: #495057;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    
+    .pagination-item:hover,
+    .pagination-item.active {
+        background: #2196F3;
+        color: white;
+        border-color: #2196F3;
+    }
+    
+    .pagination-item.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+        .archive-container {
+            padding: 1.5rem;
+            margin: 0 1rem 1rem;
+        }
+        
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .filter-form {
+            grid-template-columns: 1fr;
+        }
+        
+        .action-buttons {
+            flex-direction: column;
+        }
+        
+        .btn {
+            width: 100%;
+        }
+        
+        .data-table {
+            font-size: 0.9rem;
+        }
+        
+        .data-table th, 
+        .data-table td {
+            padding: 0.75rem 0.5rem;
+        }
+    }
+    
+    .empty-state {
+        text-align: center;
+        padding: 3rem 0;
+    }
+    
+    .empty-icon {
+        font-size: 3rem;
+        color: #cfd8dc;
+        margin-bottom: 1rem;
+    }
+    
+    .empty-message {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Estilo para os botões de ação na tabela */
+    .btn-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: #f44336;
+        color: white;
+        margin-right: 5px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .btn-action.danger {
+        background-color: #f44336;
+    }
+
+    .btn-action.danger:hover {
+        background-color: #d32f2f;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-action i {
+        font-size: 16px;
+    }
+
+    .table-actions {
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .btn-action.danger {
+        display: inline-flex !important;
+        background-color: #f44336 !important;
+        color: white !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+</style>
+
+<div class="archive-container">
+    <div class="page-header">
+        <div class="header-left">
+            <div class="header-icon">
+                <i class="fas fa-archive"></i>
+            </div>
+            <div>
+                <h1 class="header-title">Arquivo de Cirurgias Realizadas</h1>
+                <p class="header-subtitle">Histórico de pacientes que já realizaram a cirurgia</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-card">
+        <h2 class="filter-title">
+            <i class="fas fa-filter"></i>
+            Filtrar Registros
+        </h2>
+
+        <form method="POST" enctype="multipart/form-data" class="filter-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            
+            <div class="form-group">
+                <label for="mes" class="form-label">Mês da cirurgia:</label>
+                <select id="mes" name="mes" class="form-control">
+                    <option value="">Todos os meses</option>
+                    {% for m, nome in [
+                        (1, 'Janeiro'), (2, 'Fevereiro'), (3, 'Março'),
+                        (4, 'Abril'), (5, 'Maio'), (6, 'Junho'),
+                        (7, 'Julho'), (8, 'Agosto'), (9, 'Setembro'),
+                        (10, 'Outubro'), (11, 'Novembro'), (12, 'Dezembro')
+                    ] %}
+                        <option value="{{m}}" {% if filtro_mes and filtro_mes|int == m %}selected{% endif %}>
+                            {{nome}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ano" class="form-label">Ano da cirurgia:</label>
+                <select id="ano" name="ano" class="form-control">
+                    <option value="">Todos os anos</option>
+                    {% for ano in range((hoje.year - 5), hoje.year + 1) %}
+                        <option value="{{ ano }}" {% if filtro_ano and filtro_ano|int == ano %}selected{% endif %}>
+                            {{ ano }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Filtrar
+                </button>
+            </div>
+
+            <div class="form-group">
+                <a href="{{url_for('arquivo')}}" class="btn btn-secondary">
+                    <i class="fas fa-sync"></i> Limpar
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="action-buttons">
+        <a href="{{ url_for('exportar_operados') }}" class="btn btn-primary">
+            <i class="fas fa-download"></i> Exportar para Excel
+        </a>
+        <a href="{{ url_for('painel') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Voltar ao Painel
+        </a>
+    </div>
+
+    {% if session['perfil'] == 'admin' %}
+    <form method="POST" action="{{ url_for('apagar_arquivo') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <div class="action-buttons">
+            <button name="acao" value="apagar_tudo" 
+                    class="btn btn-danger"
+                    title="Apagar todo o arquivo"
+                    aria-label="Apagar todo o arquivo"
+                    onclick="return confirm('⚠️ Atenção! Esta ação irá apagar TODOS os registros de cirurgias realizadas. Tem certeza que deseja continuar?')">
+                <i class="fas fa-trash"></i> Apagar Todo Arquivo
+            </button>
+
+            <button name="acao" value="apagar_selecionados" class="btn btn-danger" id="btn-apagar-selecionados">
+                <i class="fas fa-trash-alt"></i> Apagar Selecionados
+            </button>
+        </div>
+    {% endif %}
+
+    {% if pacientes and pacientes|length > 0 %}
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    {% if session['perfil'] == 'admin' %}
+                    <th class="checkbox-wrapper">
+                        <input type="checkbox" id="select-all">
+                        <label for="select-all" class="custom-checkbox"></label>
+                    </th>
+                    {% endif %}
+                    <th>Nome do Paciente</th>
+                    <th>Data de Nascimento</th>
+                    <th>Data da Consulta</th>
+                    <th>Escore</th>
+                    <th>Prioridade</th>
+                    <th>Data da Cirurgia</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in pacientes %}
+                <tr>
+                    {% if session['perfil'] == 'admin' %}
+                    <td class="checkbox-wrapper">
+                        <input type="checkbox" name="selecionados" value="{{ p['id'] }}" id="select-{{ p['id'] }}" class="checkbox-paciente">
+                        <label for="select-{{ p['id'] }}" class="custom-checkbox"></label>
+                    </td>
+                    {% endif %}
+                    <td>{{ p['nome'] }}</td>
+                    <td>{{ p['nascimento'] }}</td>
+                    <td>{{ p['data_consulta'] }}</td>
+                    <td>{{ p['escore'] }}</td>
+                    <td>
+                        <span class="prioridade-tag {{ p['prioridade']|lower|replace(' ', '-') }}">
+                            {{ p['prioridade'] }}
+                        </span>
+                    </td>
+                    <td>{{ p['data_realizacao'] }}</td>
+                    <td class="table-actions">
+                        {% if session['perfil'] in ['medico', 'admin'] %}
+                        <a href="{{ url_for('cancelar_realizacao', operado_id=p['id']) }}" 
+                           class="btn-action danger" 
+                           title="Cancelar realização e devolver à lista de espera"
+                           onclick="return confirm('Confirmar cancelamento da realização da cirurgia para {{ p['nome'] }}?\\nO paciente voltará à lista de espera.')">
+                            <i class="fas fa-times"></i>
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        <a href="{{ url_for('arquivo', page=page-1) if page > 1 else '#' }}" 
+           class="pagination-item {% if page <= 1 %}disabled{% endif %}">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        
+        {% for p in range(1, total_pages+1) %}
+            {% if p == page %}
+                <a class="pagination-item active">{{ p }}</a>
+            {% else %}
+                <a href="{{ url_for('arquivo', page=p) }}" class="pagination-item">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+        
+        <a href="{{ url_for('arquivo', page=page+1) if page < total_pages else '#' }}" 
+           class="pagination-item {% if page >= total_pages %}disabled{% endif %}">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    {% endif %}
+    
+    {% else %}
+    <div class="empty-state">
+        <div class="empty-icon">
+            <i class="fas fa-inbox"></i>
+        </div>
+        <p class="empty-message">Nenhum registro de cirurgia encontrado</p>
+        {% if filtro_mes or filtro_ano %}
+            <a href="{{ url_for('arquivo') }}" class="btn btn-primary">
+                <i class="fas fa-sync"></i> Limpar filtros
+            </a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if session['perfil'] == 'admin' %}
+    </form>
+    {% endif %}
+</div>
+
+<script nonce="{{ csp_nonce() }}">
+    document.addEventListener('DOMContentLoaded', function() {
+        // Funcionalidade de selecionar todos os checkboxes
+        const selectAllCheckbox = document.getElementById('select-all');
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.checkbox-paciente');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+                updateDeleteButtonState();
+            });
+        }
+        
+        // Atualizar estado do botão de acordo com seleções
+        const checkboxes = document.querySelectorAll('.checkbox-paciente');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateDeleteButtonState);
+        });
+        
+        // Verificar se há itens selecionados antes de apagar
+        const btnApagarSelecionados = document.getElementById('btn-apagar-selecionados');
+        if (btnApagarSelecionados) {
+            btnApagarSelecionados.addEventListener('click', function(e) {
+                const checkboxesSelecionados = document.querySelectorAll('.checkbox-paciente:checked');
+                if (checkboxesSelecionados.length === 0) {
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Nenhum item selecionado',
+                        text: 'Selecione pelo menos um registro para apagar.'
+                    });
+                } else {
+                    const confirmacao = confirm(`Deseja apagar ${checkboxesSelecionados.length} registro(s) selecionado(s)?`);
+                    if (!confirmacao) {
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
+        
+        function updateDeleteButtonState() {
+            const btnDelete = document.getElementById('btn-apagar-selecionados');
+            if (btnDelete) {
+                const anyChecked = Array.from(document.querySelectorAll('.checkbox-paciente')).some(cb => cb.checked);
+                btnDelete.disabled = !anyChecked;
+                if (anyChecked) {
+                    btnDelete.classList.add('btn-danger');
+                    btnDelete.classList.remove('btn-secondary');
+                } else {
+                    btnDelete.classList.remove('btn-danger');
+                    btnDelete.classList.add('btn-secondary');
+                }
+            }
+        }
+        
+        // Inicializar o estado do botão
+        updateDeleteButtonState();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectAllCheckbox = document.getElementById('select-all');
+        const checkboxes = document.querySelectorAll('.checkbox-paciente');
+
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', function() {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+                updateDeleteButtonState();
+            });
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateDeleteButtonState);
+        });
+
+        function updateDeleteButtonState() {
+            const btnDelete = document.getElementById('btn-apagar-selecionados');
+            const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+            btnDelete.disabled = !anyChecked;
+        }
+
+        updateDeleteButtonState();
+    });
+
+    const btnApagarSelecionados = document.getElementById('btn-apagar-selecionados');
+    if (btnApagarSelecionados) {
+        btnApagarSelecionados.addEventListener('click', function(e) {
+            const checkboxesSelecionados = document.querySelectorAll('.checkbox-paciente:checked');
+            if (checkboxesSelecionados.length === 0) {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Nenhum item selecionado',
+                    text: 'Selecione pelo menos um registro para apagar.'
+                });
+            }
+        });
+    }
+</script>
+{% endblock %}
