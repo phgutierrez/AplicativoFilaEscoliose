@@ -938,12 +938,12 @@ def novo():
         nascimento = request.form['nascimento']
         contato = request.form['contato']
         municipio = request.form['municipio']
-        
+
         # Correção: Trocar 'ou' por 'or'
         if not nome or not nascimento or not contato or not municipio:
             flash("Todos os campos são obrigatórios")
             return render_template("novo.html", municipios=MUNICIPIOS_PB)
-        
+
         # Validação do município
         if municipio not in MUNICIPIOS_PB['todos']:
             flash('Município inválido')
@@ -1391,6 +1391,29 @@ def marcar_demanda_judicial():
         # Log adicional para rastrear o erro
         logger.error(traceback.format_exc())
         flash(f"Erro ao processar: {str(e)}", "error")
+        return redirect(url_for('painel'))
+
+
+@app.route('/imprimir_lista_completa')
+@login_required
+def imprimir_lista_completa():
+    try:
+        pacientes = get_all_active_patients()
+        # Calcula a posição na lista completa antes de passar para o template
+        pacientes_com_posicao = []
+        for index, paciente in enumerate(pacientes):
+            paciente_dict = dict(paciente)  # Converte sqlite3.Row para dict
+            paciente_dict['posicao'] = index + 1
+            pacientes_com_posicao.append(paciente_dict)
+
+        logger.info(
+            f"Gerando lista completa para impressão com {len(pacientes_com_posicao)} pacientes.")
+        return render_template('imprimir_lista.html', pacientes=pacientes_com_posicao)
+    except Exception as e:
+        logger.error(
+            f"Erro ao gerar lista completa para impressão: {str(e)}\n{traceback.format_exc()}")
+        flash("Erro ao gerar a lista para impressão.", "error")
+        # Redireciona de volta ao painel em caso de erro
         return redirect(url_for('painel'))
 
 # Add error handler

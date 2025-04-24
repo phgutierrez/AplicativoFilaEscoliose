@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Completa de Pacientes para Impressão</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            body {
+                margin: 0.5cm;
+            }
+
+            h1 {
+                font-size: 16pt;
+            }
+
+            table {
+                font-size: 10pt;
+            }
+
+            th,
+            td {
+                padding: 4px;
+            }
+
+            /* Opcional: Esconder elementos não desejados na impressão, se houver */
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fila de Pacientes para Cirurgia - Lista Completa</h1>
+
+    {% if pacientes and pacientes|length > 0 %}
+    <table>
+        <thead>
+            <tr>
+                <th>Posição</th>
+                <th>Nome</th>
+                <th>Nascimento</th>
+                <th>Data da Última Consulta</th>
+                <th>Escore</th>
+                <th>Prioridade</th>
+                <th>Município</th>
+                <th>Médico Assistente</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in pacientes %}
+            <tr>
+                <td>{{ p.posicao }}</td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.nascimento }}</td>
+                <td>{{ p.ultima_consulta|default(p.data) }}</td>
+                <td>{{ p.escore }}</td>
+                <td>{{ p.prioridade }}</td>
+                <td>{{ p.municipio|default('Não informado') }}</td>
+                <td>{{ p.medico_assistente|default('Não informado') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Nenhum paciente na fila.</p>
+    {% endif %}
+
+    <script>
+        // Chama a impressão automaticamente quando a página carregar
+        window.onload = function () {
+            window.print();
+            // Opcional: Tentar fechar a aba após a impressão (pode ser bloqueado pelo navegador)
+            // setTimeout(function() { window.close(); }, 1000);
+        };
+    </script>
+
+</body>
+
+</html>
