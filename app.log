@@ -199,3 +199,62 @@
 2025-04-24 11:41:37,237 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:41:37] "[32mGET /logout HTTP/1.1[0m" 302 -
 2025-04-24 11:41:37,475 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:41:37] "GET / HTTP/1.1" 200 -
 2025-04-24 11:41:37,561 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:41:37] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-24 11:53:15,917 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-04-24 11:53:15,917 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-04-24 11:53:15,917 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-04-24 11:53:16,008 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-04-24 11:53:16,008 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-04-24 11:53:16,138 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.61:5000
+2025-04-24 11:53:16,138 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 11:53:33,693 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:33] "GET / HTTP/1.1" 200 -
+2025-04-24 11:53:34,203 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:34] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-04-24 11:53:34,341 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-24 11:53:37,496 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:37] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-04-24 11:53:37,601 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:37] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:53:37,685 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:53:39,523 - __main__ - INFO - Gerando lista completa para impressão com 81 pacientes.
+2025-04-24 11:53:39,544 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:39] "GET /imprimir_lista_completa HTTP/1.1" 200 -
+2025-04-24 11:53:48,768 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:48] "GET /arquivo HTTP/1.1" 200 -
+2025-04-24 11:53:48,841 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:53:50,019 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:50] "GET /agenda HTTP/1.1" 200 -
+2025-04-24 11:53:50,299 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:53:59,392 - __main__ - INFO - Agendamento cancelado (ID: 1)
+2025-04-24 11:53:59,392 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:59] "[32mGET /cancelar_agendamento/1 HTTP/1.1[0m" 302 -
+2025-04-24 11:53:59,601 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:59] "GET /agenda HTTP/1.1" 200 -
+2025-04-24 11:53:59,674 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:53:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:02,289 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:02] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:54:02,459 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:06,173 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:06] "GET /novo HTTP/1.1" 200 -
+2025-04-24 11:54:06,469 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:10,409 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:10] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:54:10,636 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:13,440 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:13] "GET /arquivo HTTP/1.1" 200 -
+2025-04-24 11:54:13,752 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:18,300 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:18] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:54:18,526 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:27,123 - __main__ - INFO - Dados recebidos para agendamento: {'paciente_id': '50', 'data_cirurgia': '2025-05-21'}
+2025-04-24 11:54:27,124 - __main__ - INFO - Data formatada: 21/05/2025
+2025-04-24 11:54:27,218 - __main__ - INFO - Novo agendamento criado para paciente 50
+2025-04-24 11:54:27,227 - __main__ - INFO - Cirurgia agendada com sucesso para o paciente (ID: 50) para 21/05/2025
+2025-04-24 11:54:27,227 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:27] "POST /agendar_cirurgia HTTP/1.1" 200 -
+2025-04-24 11:54:29,400 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:29] "GET /agenda HTTP/1.1" 200 -
+2025-04-24 11:54:29,634 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:31,704 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:31] "[32mGET /realizar_cirurgia/50 HTTP/1.1[0m" 302 -
+2025-04-24 11:54:32,004 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:32] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:54:32,394 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:34,838 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:34] "GET /agenda HTTP/1.1" 200 -
+2025-04-24 11:54:35,138 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:36,252 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:36] "GET /arquivo HTTP/1.1" 200 -
+2025-04-24 11:54:36,484 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:46,794 - __main__ - INFO - Realização de cirurgia cancelada para paciente Tamires Alves de Lucena (ID: 1)
+2025-04-24 11:54:46,796 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:46] "[32mGET /cancelar_realizacao/1 HTTP/1.1[0m" 302 -
+2025-04-24 11:54:47,090 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:47] "GET /arquivo HTTP/1.1" 200 -
+2025-04-24 11:54:47,450 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:49,008 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:49] "GET /painel HTTP/1.1" 200 -
+2025-04-24 11:54:49,305 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-04-24 11:54:52,478 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-04-24 11:54:52,715 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "GET / HTTP/1.1" 200 -
+2025-04-24 11:54:52,791 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -

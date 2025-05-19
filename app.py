@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file, jsonify, g
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime, timedelta
+from datetime import datetime
 from flask_wtf.csrf import CSRFProtect
 from flask_talisman import Talisman
 import sqlite3
@@ -16,10 +16,8 @@ from municipios_pb import MUNICIPIOS_PB
 import secrets
 
 # Importações dos novos módulos
-from database import init_app, get_db, get_db_session, engine
-from models import Base, Usuario, Paciente, Consulta, Operado, Agendamento
-from redis_locks import Lock, with_lock
-from sqlalchemy import text, or_, and_, desc, func
+from database import init_app
+from models import Base
 
 # Carregar variáveis de ambiente
 load_dotenv()
@@ -80,16 +78,16 @@ talisman = Talisman(
     strict_transport_security=False
 )
 
-# Inicializar banco de dados
-engine = init_app(app)
+# Inicializar banco de dados e armazenar a instância retornada
+db_engine = init_app(app)
 
 # Verificamos se é ambiente de produção para criar tabelas automaticamente
 if os.environ.get('FLASK_ENV') != 'production':
     with app.app_context():
         # Verificar se o engine foi inicializado corretamente
-        if engine is not None:
+        if db_engine is not None:
             logger.info("Creating database tables with SQLAlchemy")
-            Base.metadata.create_all(bind=engine)
+            Base.metadata.create_all(bind=db_engine)
         else:
             logger.error("Database engine is None, cannot create tables!")
 
@@ -651,7 +649,9 @@ def confirmar_importacao():
         session.pop('temp_import_file', None)
         try:
             os.remove(temp_file)
-        except:
+        except OSError as e:
+            logger.warning(
+                f"Erro ao remover arquivo temporário {temp_file}: {e}")
             pass
 
         flash(f"{count} pacientes importados com sucesso!", "success")
@@ -662,7 +662,9 @@ def confirmar_importacao():
         if conn is not None:
             try:
                 conn.execute("ROLLBACK")
-            except:
+            except Exception as rollback_error:
+                logger.error(
+                    f"Erro durante o rollback após falha na importação: {rollback_error}")
                 pass
 
         logger.error(f"Erro na importação: {str(e)}")
@@ -671,7 +673,9 @@ def confirmar_importacao():
         # Tentar limpar o arquivo temporário
         try:
             os.remove(temp_file)
-        except:
+        except OSError as e:
+            logger.warning(
+                f"Erro ao remover arquivo temporário {temp_file} após falha na importação: {e}")
             pass
 
         session.pop('temp_import_file', None)
