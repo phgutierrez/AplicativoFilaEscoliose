@@ -129,6 +129,47 @@
         gap: 0.75rem;
     }
 
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-filter {
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        color: #666;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-filter:hover {
+        background-color: #f5f5f5;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-filter.active {
+        background-color: #4CAF50;
+        color: white;
+        border-color: #4CAF50;
+        box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-filter.active:hover {
+        background-color: #43a047;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+    }
+
     .btn {
         display: inline-flex;
         align-items: center;
@@ -699,6 +740,12 @@
             </a>
             {% endif %}
         </div>
+        <div class="filter-buttons">
+            <button class="btn-filter" onclick="filtrarPorTipo('idiopatica')">Idiopática</button>
+            <button class="btn-filter" onclick="filtrarPorTipo('neuromuscular')">Neuromuscular</button>
+            <button class="btn-filter" onclick="filtrarPorTipo('sindromica')">Sindrômica/Congênita</button>
+            <button class="btn-filter" id="mostrarTodosBtn">Mostrar Todos</button> {# NOVO BOTÃO #}
+        </div>
         <div class="search-box">
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="buscaTabela" class="search-input" placeholder="Buscar paciente, prioridade, data...">
@@ -775,6 +822,8 @@
                 <th>Data da Última Consulta</th>
                 <th>Escore</th>
                 <th>Prioridade</th>
+                <th>Tipo de Escoliose</th>
+                <th>Grau da Curva</th>
                 <th>Ações</th>
             </thead>
             <tbody>
@@ -804,6 +853,18 @@
                             {{ p['prioridade'] }}
                         </div>
                     </td>
+                    <td>
+                        {% if p['tipo_escoliose'] == '1' %}
+                        Idiopática
+                        {% elif p['tipo_escoliose'] == '2' %}
+                        Sindrômica
+                        {% elif p['tipo_escoliose'] == '3' %}
+                        Neuromuscular
+                        {% else %}
+                        Não informado
+                        {% endif %}
+                    </td>
+                    <td>{{ p['grau_curva'] or 'Não informado' }}</td>
                     <td class="table-actions">
                         <!-- Botão de informações -->
                         <button class="action-btn btn-info" data-contato="{{ p['contato']|default('Não informado')|e }}"
@@ -836,7 +897,7 @@
     </div>
 
     <!-- Paginação -->
-    <div class="pagination-container">
+    <div class="pagination-container" id="paginationContainer"> {# ID ADICIONADO #}
         <ul class="pagination">
             <li>
                 <a href="{{ url_for('painel', page=page-1) if page > 1 else '#' }}"
@@ -877,292 +938,238 @@
 
 <script nonce="{{ csp_nonce() }}">
     document.addEventListener('DOMContentLoaded', function () {
-        /* Código existente de inicialização */
+        const userProfile = {{ session["perfil"]|tojson|safe }};
+        const paginationContainer = document.getElementById('paginationContainer'); 
 
-        // // Funcionalidade de Impressão (Usando Delegação de Eventos) - REMOVIDO
-        // document.body.addEventListener('click', function(event) {
-        //     const printButton = event.target.closest('#printButton');
-        //     if (printButton) {
-        //         console.log('Botão Imprimir clicado (via delegação)!');
-        //         window.print();
-        //     }
-        // });
+        window.filtrarPorTipo = function (tipo) {
+            try {
+                const buttons = document.querySelectorAll('.btn-filter');
+                buttons.forEach(btn => btn.classList.remove('active'));
 
-        // /* TEMPORARIAMENTE COMENTADO PARA DEBUG: */ // REMOVENDO COMENTÁRIO EM MASSA
-        // Funcionalidade para gerenciar checkboxes e botão de apagar
-        const checkboxes = document.querySelectorAll('.patient-checkbox');
-        const selectAllCheckbox = document.getElementById('selectAll');
-        const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
-        const selectedCountSpan = document.getElementById('selectedCount');
-
-        // Função para atualizar contagem e estado do botão
-        function updateSelectedCount() {
-            const checkedBoxes = document.querySelectorAll('.patient-checkbox:checked');
-            const count = checkedBoxes.length;
-
-            if (selectedCountSpan) {
-                selectedCountSpan.textContent = count;
-            }
-
-            if (deleteSelectedBtn) {
-                deleteSelectedBtn.disabled = count === 0;
-            }
-        }
-
-        // Adicionar event listeners para checkboxes individuais
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', updateSelectedCount);
-        });
-
-        // Funcionalidade para o checkbox "selecionar todos"
-        if (selectAllCheckbox) {
-            selectAllCheckbox.addEventListener('change', function () {
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.checked = selectAllCheckbox.checked;
-                });
-                updateSelectedCount();
-            });
-        }
-
-        // Verificar se o formulário de exclusão existe
-        const deleteForm = document.getElementById('deleteForm');
-        if (deleteForm) {
-            deleteForm.addEventListener('submit', function (event) {
-                event.preventDefault(); // Impedir o envio padrão
-                const checkedBoxes = document.querySelectorAll('.patient-checkbox:checked');
-
-                if (checkedBoxes.length === 0) {
-                    alert('Selecione pelo menos um paciente para excluir.');
-                    return false;
+                if (event && event.target && event.target.id !== 'mostrarTodosBtn') {
+                    event.target.classList.add('active');
                 }
 
-                // Confirmação de exclusão
-                if (confirm('Tem certeza que deseja excluir os pacientes selecionados? Esta ação não pode ser desfeita.')) {
-                    // Limpar inputs existentes para evitar duplicatas
-                    deleteForm.querySelectorAll('input[name="selecionados"]').forEach(el => el.remove());
-
-                    // Adicionar os IDs selecionados ao formulário
-                    checkedBoxes.forEach(function (checkbox) {
-                        const hiddenInput = document.createElement('input');
-                        hiddenInput.type = 'hidden';
-                        hiddenInput.name = 'selecionados';
-                        hiddenInput.value = checkbox.value;
-                        deleteForm.appendChild(hiddenInput);
-                    });
-
-                    // Enviar o formulário
-                    deleteForm.submit();
-                }
-            });
-        }
-
-        // Configurar evento de clique para os botões de agendamento
-        document.querySelectorAll('.btn-agenda').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const pacienteId = this.getAttribute('data-paciente-id');
-                const pacienteElement = this.closest('[data-nome]');
-
-                if (!pacienteElement) {
-                    console.error("Elemento paciente não encontrado");
-                    return;
-                }
-
-                const pacienteNome = pacienteElement.getAttribute('data-nome');
-
-                // Mostrar modal de agendamento
-                Swal.fire({
-                    title: 'Agendar Cirurgia',
-                    html: `
-                        <p>Paciente: <strong>${pacienteNome}</strong></p>
-                        <div class="agendamento-form">
-                            <label for="dataCirurgia">Data da Cirurgia:</label>
-                            <input type="date" id="dataCirurgia" class="swal2-input" 
-                                   min="${new Date().toISOString().split('T')[0]}" required>
-                        </div>
-                    `,
-                    showCancelButton: true,
-                    confirmButtonText: 'Confirmar Agendamento',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonColor: '#2196F3',
-                    cancelButtonColor: '#6c757d',
-                    showLoaderOnConfirm: true,
-                    preConfirm: () => {
-                        const dataCirurgia = document.getElementById('dataCirurgia').value;
-                        if (!dataCirurgia) {
-                            Swal.showValidationMessage('Por favor, selecione uma data');
-                            return false;
+                fetch(`/filtrar_pacientes?tipo=${tipo}`, {
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token() }}'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error('Erro do servidor ao filtrar:', data.error);
+                            alert('Erro ao filtrar pacientes: ' + data.error);
+                            return;
+                        }
+                        if (!data || !Array.isArray(data.pacientes)) {
+                            console.error('Dados inválidos recebidos do servidor');
+                            alert('Erro ao processar dados dos pacientes.');
+                            return;
                         }
 
-                        // Enviar dados para o backend
-                        return fetch('/agendar_cirurgia', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': '{{ csrf_token() }}'
-                            },
-                            body: JSON.stringify({
-                                paciente_id: pacienteId,
-                                data_cirurgia: dataCirurgia
+                        const tbody = document.querySelector('.patients-table tbody');
+                        if (!tbody) {
+                            console.error('Elemento tbody não encontrado');
+                            return;
+                        }
+                        tbody.innerHTML = ''; 
+
+                        data.pacientes.forEach((p, index) => {
+                            if (!p) return; 
+
+                            const tr = document.createElement('tr');
+                            const prioridade = p.prioridade || 'Não informado';
+                            tr.className = prioridade.toLowerCase().replace(/\s+/g, '-');
+                            tr.setAttribute('data-nome', p.nome || '');
+                            tr.setAttribute('data-prioridade', prioridade);
+
+                            // Determina o conteúdo da primeira célula (checkbox ou vazia)
+                            let firstCell = '';
+                            if (userProfile === 'admin') {
+                                firstCell = `<td><input type="checkbox" name="selecionados" value="${p.id || ''}" class="patient-checkbox"></td>`;
+                            }
+
+                            // Determina o link do nome do paciente
+                            let nomeLink = p.nome || '';
+                            if (userProfile !== 'gestor') {
+                                nomeLink = `<a href="/nova_consulta/${p.id || ''}">${p.nome || ''}</a>`;
+                            }
+
+                            // Botão de demanda judicial condicional
+                            let judicialButton = '';
+                            if (['medico', 'admin', 'gestor'].includes(userProfile)) {
+                                judicialButton = `
+                                <button class="action-btn btn-judicial ${prioridade === 'Demanda Judicial' ? 'active' : ''}"
+                                    data-paciente-id="${p.id || ''}"
+                                    title="${prioridade === 'Demanda Judicial' ? 'Remover status de Demanda Judicial' : 'Marcar como Demanda Judicial'}">
+                                    <i class="fas fa-exclamation"></i>
+                                </button>`;
+                            }
+
+                            tr.innerHTML = `
+                            ${firstCell}
+                            <td>${index + 1}</td>
+                            <td>${nomeLink}</td>
+                            <td>${p.nascimento || ''}</td>
+                            <td>${p.ultima_consulta || p.data || ''}</td>
+                            <td>${p.escore || 0}</td>
+                            <td>
+                                <div class="priority-tag ${prioridade.toLowerCase().replace(/\s+/g, '-')}">
+                                    <span class="priority-circle ${prioridade.toLowerCase().replace(/\s+/g, '-')}"></span>
+                                    ${prioridade}
+                                </div>
+                            </td>
+                            <td>${p.tipo_escoliose || 'Não informado'}</td>
+                            <td>${p.grau_curva || 'Não informado'}</td>
+                            <td class="table-actions">
+                                <button class="action-btn btn-info" 
+                                    data-contato="${(p.contato || 'Não informado').replace(/"/g, '&quot;')}" 
+                                    data-municipio="${(p.municipio || 'Não informado').replace(/"/g, '&quot;')}" 
+                                    data-primeira-consulta="${(p.primeira_consulta || 'Não informada').replace(/"/g, '&quot;')}" 
+                                    data-medico-assistente="${(p.medico_assistente || 'Não informado').replace(/"/g, '&quot;')}"
+                                    title="Ver detalhes do paciente">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="action-btn btn-agenda" data-paciente-id="${p.id || ''}" title="Agendar cirurgia">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </button>
+                                ${judicialButton}
+                            </td>
+                        `;
+                            tbody.appendChild(tr);
+                        });
+
+                        const statValues = document.querySelectorAll('.stat-value');
+                        if (statValues.length >= 4) {
+                            statValues[0].textContent = data.total || 0; 
+                            statValues[1].textContent = data.total_alta_prioridade || 0;
+                            statValues[2].textContent = data.total_intermediaria || 0;
+                            statValues[3].textContent = data.total_eletiva || 0;
+                        }
+                        
+                        if (paginationContainer) {
+                            paginationContainer.style.display = 'none';
+                        }
+                        initializeActionButtons(); 
+                    })
+                    .catch(error => {
+                        console.error('Erro ao filtrar pacientes:', error);
+                        alert('Erro ao filtrar pacientes. Por favor, tente novamente.');
+                    });
+            } catch (error) {
+                console.error('Erro ao processar filtro:', error);
+                alert('Erro ao processar filtro. Por favor, tente novamente.');
+            }
+        };
+
+        const mostrarTodosBtn = document.getElementById('mostrarTodosBtn');
+        if (mostrarTodosBtn) {
+            mostrarTodosBtn.addEventListener('click', function() {
+                const buttons = document.querySelectorAll('.btn-filter');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                window.location.href = "{{ url_for('painel') }}";
+            });
+        }
+
+        console.log('Tipos de escoliose na tabela (após carregamento inicial ou filtro):');
+        document.querySelectorAll('.patients-table tbody tr').forEach(row => {
+            const adminCheckboxOffset = userProfile === 'admin' ? 1 : 0;
+            const tipoCellIndex = 6 + adminCheckboxOffset; // Nome(1) + Nasc(2) + UltCons(3) + Esc(4) + Prio(5) + TIPO(6)
+            const tipoCell = row.cells[tipoCellIndex]; 
+            if (tipoCell) {
+                 console.log(tipoCell.textContent.trim());
+            }
+        });
+        
+        function initializeActionButtons() {
+            document.querySelectorAll('.action-btn.btn-info').forEach(button => {
+                button.addEventListener('click', function () {
+                    const contato = this.dataset.contato;
+                    const municipio = this.dataset.municipio;
+                    const primeiraConsulta = this.dataset.primeiraConsulta;
+                    const medicoAssistente = this.dataset.medicoAssistente;
+                    alert(`Detalhes:\nContato: ${contato}\nMunicípio: ${municipio}\nPrimeira Consulta: ${primeiraConsulta}\nMédico Assistente: ${medicoAssistente}`);
+                });
+            });
+
+            document.querySelectorAll('.action-btn.btn-agenda').forEach(button => {
+                button.addEventListener('click', function () {
+                    const pacienteId = this.dataset.pacienteId;
+                    const dataCirurgiaPrompt = prompt(`Agendar cirurgia para o paciente ID ${pacienteId}.\nDigite a data (DD/MM/AAAA):`);
+                    if (dataCirurgiaPrompt) {
+                        try {
+                            const [dia, mes, ano] = dataCirurgiaPrompt.split('/');
+                            if (!dia || !mes || !ano || dia.length !== 2 || mes.length !== 2 || ano.length !== 4) {
+                                throw new Error('Formato de data inválido.');
+                            }
+                            const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`; 
+                            
+                            fetch('/agendar_cirurgia', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': '{{ csrf_token() }}'
+                                },
+                                body: JSON.stringify({
+                                    paciente_id: pacienteId,
+                                    data_cirurgia: dataFormatada 
+                                })
                             })
-                        })
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Erro ao agendar cirurgia');
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.sucesso) {
+                                    alert(data.mensagem);
+                                } else {
+                                    alert('Erro: ' + (data.erro || 'Não foi possível agendar.'));
                                 }
-                                return response.json();
                             })
-                            .catch(error => {
-                                Swal.showValidationMessage(`Erro: ${error.message}`);
+                            .catch(err => {
+                                console.error('Erro ao agendar:', err);
+                                alert('Erro ao conectar com o servidor para agendamento.');
                             });
+                        } catch (e) {
+                            alert(e.message + ' Use o formato DD/MM/AAAA.');
+                        }
                     }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Agendado!',
-                            text: 'Cirurgia agendada com sucesso.',
-                            icon: 'success',
-                            confirmButtonColor: '#4CAF50'
+                });
+            });
+
+            document.querySelectorAll('.action-btn.btn-judicial').forEach(button => {
+                button.addEventListener('click', function () {
+                    const pacienteId = this.dataset.pacienteId;
+                    const isCurrentlyJudicial = this.classList.contains('active');
+                    const action = isCurrentlyJudicial ? 'remover' : 'marcar';
+                    
+                    if (confirm(`Deseja ${action} este paciente como Demanda Judicial?`)) {
+                        const formData = new FormData();
+                        formData.append('paciente_id', pacienteId);
+                        if (isCurrentlyJudicial) {
+                            formData.append('remover', 'true');
+                        }
+                        formData.append('csrf_token', '{{ csrf_token() }}');
+
+                        fetch('/marcar_demanda_judicial', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                window.location.reload(); 
+                            } else {
+                                alert('Erro ao atualizar status de demanda judicial.');
+                            }
+                        })
+                        .catch(err => {
+                            console.error('Erro ao marcar/desmarcar demanda judicial:', err);
+                            alert('Erro de conexão ao atualizar demanda judicial.');
                         });
                     }
                 });
             });
-        });
-
-        // Configurar evento de clique para os botões de informações
-        document.querySelectorAll('.btn-info').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const pacienteElement = this.closest('[data-nome]');
-
-                if (!pacienteElement) {
-                    console.error("Elemento paciente não encontrado");
-                    return;
-                }
-
-                const pacienteNome = pacienteElement.getAttribute('data-nome');
-                const contato = this.getAttribute('data-contato');
-                const municipio = this.getAttribute('data-municipio');
-                const primConsulta = this.getAttribute('data-primeira-consulta');
-                const medicoAssist = this.getAttribute('data-medico-assistente');
-
-                // Mostrar modal de informações
-                Swal.fire({
-                    title: 'Dados do Paciente',
-                    html: `
-                    <div class="dados-paciente">
-                        <p><strong>Nome:</strong> ${pacienteNome}</p>
-                        <p><strong>Contato:</strong> ${contato}</p>
-                        <p><strong>Município:</strong> ${municipio}</p>
-                        <p><strong>Primeira Consulta:</strong> ${primConsulta}</p>
-                        <p><strong>Médico Assistente:</strong> ${medicoAssist}</p>
-                    </div>
-                `,
-                    confirmButtonText: 'Fechar',
-                    confirmButtonColor: '#2196F3'
-                });
-            });
-        });
-        // Configurar evento para os botões de demanda judicial
-        document.querySelectorAll('.btn-judicial').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                const pacienteId = this.getAttribute('data-paciente-id');
-                const pacienteElement = this.closest('[data-nome]');
-
-                if (!pacienteElement) {
-                    console.error("Elemento paciente não encontrado");
-                    return;
-                }
-
-                const pacienteNome = pacienteElement.getAttribute('data-nome');
-                const prioridade = pacienteElement.getAttribute('data-prioridade');
-                const isDemandaJudicial = prioridade === 'Demanda Judicial';
-
-                // Mensagem e título baseados no status atual
-                const titulo = isDemandaJudicial ? 'Remover Demanda Judicial' : 'Demanda Judicial';
-                const mensagem = isDemandaJudicial
-                    ? `<p>Deseja remover o status de demanda judicial de <strong>${pacienteNome}</strong>?</p>
-                   <p class="text-muted"><small>O paciente retornará à sua classificação de prioridade anterior.</small></p>`
-                    : `<p>Deseja marcar o paciente <strong>${pacienteNome}</strong> como demanda judicial?</p>
-                   <p class="text-warning"><small>Esta ação dará prioridade máxima ao paciente na fila de espera.</small></p>`;
-
-                // Cores e ícones diferentes
-                const confirmBtnColor = isDemandaJudicial ? '#3085d6' : '#d33';
-                const confirmBtnText = isDemandaJudicial ? 'Sim, remover status' : 'Sim, é Demanda Judicial';
-                const icon = isDemandaJudicial ? 'info' : 'warning';
-
-                // Mostrar confirmação
-                Swal.fire({
-                    title: titulo,
-                    html: mensagem,
-                    icon: icon,
-                    showCancelButton: true,
-                    confirmButtonText: confirmBtnText,
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonColor: confirmBtnColor,
-                    cancelButtonColor: '#6c757d',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Criar formulário para envio com CSRF token
-                        const form = document.createElement('form');
-                        form.method = 'POST';
-                        form.action = '/marcar_demanda_judicial';
-
-                        // Adicionar CSRF token
-                        const csrfToken = document.createElement('input');
-                        csrfToken.type = 'hidden';
-                        csrfToken.name = 'csrf_token';
-                        csrfToken.value = '{{ csrf_token() }}';
-                        form.appendChild(csrfToken);
-
-                        // Adicionar ID do paciente
-                        const idInput = document.createElement('input');
-                        idInput.type = 'hidden';
-                        idInput.name = 'paciente_id';
-                        idInput.value = pacienteId;
-                        form.appendChild(idInput);
-
-                        // Adicionar flag de remover se for o caso
-                        if (isDemandaJudicial) {
-                            const removerInput = document.createElement('input');
-                            removerInput.type = 'hidden';
-                            removerInput.name = 'remover';
-                            removerInput.value = 'true';
-                            form.appendChild(removerInput);
-                        }
-
-                        // Adicionar o form ao documento e enviar
-                        document.body.appendChild(form);
-                        form.submit();
-                    }
-                });
-            });
-        });
-
-        // ---- Funcionalidade de Busca ----
-        const buscaInput = document.getElementById('buscaTabela');
-        const clearSearchBtn = document.getElementById('clearSearch');
-        const tableRows = document.querySelectorAll('.patients-table tbody tr');
-
-        if (buscaInput && clearSearchBtn && tableRows.length > 0) {
-            buscaInput.addEventListener('input', function () {
-                const searchTerm = buscaInput.value.toLowerCase().trim();
-
-                tableRows.forEach(function (row) {
-                    const rowText = row.textContent.toLowerCase();
-                    if (rowText.includes(searchTerm)) {
-                        row.style.display = ''; // Mostra a linha
-                    } else {
-                        row.style.display = 'none'; // Esconde a linha
-                    }
-                });
-            });
-
-            clearSearchBtn.addEventListener('click', function () {
-                buscaInput.value = ''; // Limpa o campo de busca
-                // Dispara o evento 'input' para re-filtrar e mostrar todas as linhas
-                buscaInput.dispatchEvent(new Event('input'));
-            });
         }
-        // ---- Fim da Funcionalidade de Busca ----
+
+        initializeActionButtons();
 
     });
 </script>

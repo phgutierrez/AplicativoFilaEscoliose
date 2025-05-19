@@ -258,3 +258,598 @@
 2025-04-24 11:54:52,478 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "[32mGET /logout HTTP/1.1[0m" 302 -
 2025-04-24 11:54:52,715 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "GET / HTTP/1.1" 200 -
 2025-04-24 11:54:52,791 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 11:54:52] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-05-19 15:10:47,279 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:10:47,279 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:10:47,280 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:10:47,296 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:10:47,304 - cleanup_tasks - INFO - Cleanup completed. Removed 3 temporary files.
+2025-05-19 15:10:47,322 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:10:47,322 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:10:52,850 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:10:52] "GET / HTTP/1.1" 200 -
+2025-05-19 15:10:53,138 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:10:53] "GET /static/logo.png HTTP/1.1" 200 -
+2025-05-19 15:10:53,688 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:10:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:10:55,660 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:10:55] "POST / HTTP/1.1" 200 -
+2025-05-19 15:10:55,729 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:10:55] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-05-19 15:11:02,031 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:02] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-19 15:11:02,091 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:02] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:11:02,138 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:02] "GET /static/style.css HTTP/1.1" 200 -
+2025-05-19 15:11:13,082 - __main__ - INFO - Gerando lista completa para impressão com 81 pacientes.
+2025-05-19 15:11:13,100 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:13] "GET /imprimir_lista_completa HTTP/1.1" 200 -
+2025-05-19 15:11:26,996 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:26] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:11:27,066 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:11:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:48,354 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:48] "GET /arquivo HTTP/1.1" 200 -
+2025-05-19 15:12:48,454 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:50,411 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:50] "GET /agenda HTTP/1.1" 200 -
+2025-05-19 15:12:50,473 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:12:51,819 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:51] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:12:51,960 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:12:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:13:39,544 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:39] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:13:39,617 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:13:41,142 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:41] "GET /nova_consulta/3 HTTP/1.1" 200 -
+2025-05-19 15:13:41,211 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:13:58,805 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:58] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:13:58,881 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:13:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:17:39,098 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:39] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:17:39,197 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:17:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:33,607 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:33] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:24:33,687 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:24:46,582 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:24:46,582 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:24:46,582 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:24:46,621 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:24:46,621 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:24:46,645 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:24:46,645 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:24:50,852 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:50] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:24:51,053 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:24:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:25:07,172 - __main__ - ERROR - Error in nova_consulta: no such column: c.observacoes
+2025-05-19 15:25:07,174 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:07] "[32mGET /nova_consulta/82 HTTP/1.1[0m" 302 -
+2025-05-19 15:25:07,204 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:07] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:25:07,273 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:25:09,569 - __main__ - ERROR - Error in nova_consulta: no such column: c.observacoes
+2025-05-19 15:25:09,572 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:09] "[32mGET /nova_consulta/82 HTTP/1.1[0m" 302 -
+2025-05-19 15:25:09,606 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:09] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:25:09,683 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:25:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:26:39,513 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:26:39] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:26:39,598 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:26:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:26:40,748 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:26:40] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:26:40,829 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:26:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:27:00,816 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:27:00,816 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:27:00,817 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:27:00,833 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:27:00,833 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:27:00,843 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:27:00,843 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:27:01,396 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:27:01] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:27:01,599 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:27:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:27:10,697 - __main__ - ERROR - Error in nova_consulta: no such column: c.observacoes
+2025-05-19 15:27:10,703 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:27:10] "[32mGET /nova_consulta/82 HTTP/1.1[0m" 302 -
+2025-05-19 15:27:10,731 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:27:10] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:27:10,800 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:27:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:28:10,281 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:28:10] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:28:10,489 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:28:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:28:12,194 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:28:12] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:28:12,316 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:28:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:29:39,913 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:39] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:29:40,052 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:29:44,532 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:44] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:29:44,622 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:29:55,893 - __main__ - INFO - Nova consulta registrada para paciente 82
+2025-05-19 15:29:55,897 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:55] "[32mPOST /nova_consulta/82 HTTP/1.1[0m" 302 -
+2025-05-19 15:29:55,953 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:55] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:29:56,087 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:29:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:30:02,278 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:30:02] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:30:02,354 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:30:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:30:12,854 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:30:12] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:30:12,974 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:30:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:31:06,743 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:31:06,743 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:31:06,745 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:31:06,760 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:31:06,765 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:31:06,790 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:31:06,792 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:31:09,358 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:31:09] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:31:09,542 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:31:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:31:39,761 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:31:39] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:31:39,830 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:31:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:32:07,937 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:32:07] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:32:08,065 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:32:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:32:43,586 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:32:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:33:26,420 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:26] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:33:26,562 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:33:35,755 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:33:35,755 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:33:35,755 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:33:35,771 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:33:35,771 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:33:35,789 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:33:35,789 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:33:37,528 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:37] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:33:37,811 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:33:50,602 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:50] "GET /nova_consulta/82 HTTP/1.1" 200 -
+2025-05-19 15:33:50,677 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:33:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:34:01,532 - __main__ - INFO - Nova consulta registrada para paciente 82
+2025-05-19 15:34:01,534 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:34:01] "[32mPOST /nova_consulta/82 HTTP/1.1[0m" 302 -
+2025-05-19 15:34:01,569 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:34:01] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:34:01,667 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:34:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:35:08,446 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:35:08] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:35:08,645 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:35:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:35:15,886 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:35:15,886 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:35:15,886 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:35:15,893 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:35:15,893 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:35:15,909 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:35:15,909 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:35:17,870 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:35:17] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:35:18,034 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:35:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:36:30,306 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:36:30] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:36:30,502 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:36:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:36:36,818 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:36:36,818 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:36:36,819 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:36:36,842 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:36:36,842 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:36:36,871 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:36:36,872 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:36:46,466 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:36:46] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:36:46,632 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:36:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:36:51,891 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:36:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:37:43,552 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:37:43,552 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:37:43,553 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:37:43,565 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:37:43,566 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:37:43,579 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:37:43,579 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:37:47,197 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:37:47] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:37:47,515 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:37:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:37:55,638 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:37:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:38:09,864 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:09] "GET /nova_consulta/3 HTTP/1.1" 200 -
+2025-05-19 15:38:09,920 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:38:23,940 - __main__ - INFO - Nova consulta registrada para paciente 3
+2025-05-19 15:38:23,945 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:23] "[32mPOST /nova_consulta/3 HTTP/1.1[0m" 302 -
+2025-05-19 15:38:23,994 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:23] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:38:24,109 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:38:30,634 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:38:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:39:18,538 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:39:18,538 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:39:18,538 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:39:18,538 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:39:18,538 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:39:18,581 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:39:18,581 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:39:20,261 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:20] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:39:20,556 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:39:34,081 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:34] "GET /painel?page=2 HTTP/1.1" 200 -
+2025-05-19 15:39:34,185 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:39:37,416 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:37] "GET /nova_consulta/49 HTTP/1.1" 200 -
+2025-05-19 15:39:37,509 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:39:44,031 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:44] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:39:44,100 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:39:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:41:54,145 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:41:54,145 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:41:54,146 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:41:54,181 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:41:54,181 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:41:54,285 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:41:54,285 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:41:56,228 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:41:56] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:41:56,553 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:41:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:41:59,005 - app - ERROR - Exception on /filtrar_pacientes [GET]
+Traceback (most recent call last):
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 162, in wrapped
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1462, in filtrar_pacientes
+    pacientes = db.session.execute(text(query)).fetchall()
+                ^^
+NameError: name 'db' is not defined
+2025-05-19 15:41:59,020 - app - ERROR - Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 162, in wrapped
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1462, in filtrar_pacientes
+    pacientes = db.session.execute(text(query)).fetchall()
+                ^^
+NameError: name 'db' is not defined
+
+2025-05-19 15:41:59,027 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:41:59] "[35m[1mGET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1[0m" 500 -
+2025-05-19 15:42:01,455 - app - ERROR - Exception on /filtrar_pacientes [GET]
+Traceback (most recent call last):
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 162, in wrapped
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1462, in filtrar_pacientes
+    pacientes = db.session.execute(text(query)).fetchall()
+                ^^
+NameError: name 'db' is not defined
+2025-05-19 15:42:01,457 - app - ERROR - Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\phgut\AppData\Local\Programs\Python\Python311\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 162, in wrapped
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1462, in filtrar_pacientes
+    pacientes = db.session.execute(text(query)).fetchall()
+                ^^
+NameError: name 'db' is not defined
+
+2025-05-19 15:42:01,459 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:42:01] "[35m[1mGET /filtrar_pacientes?tipo=sindromica HTTP/1.1[0m" 500 -
+2025-05-19 15:42:05,401 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:42:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:52:05,288 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:52:05,288 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:52:05,290 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:52:05,312 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:52:05,312 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:52:05,349 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:52:05,350 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:52:09,361 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:52:09] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:52:09,783 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:52:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:52:13,900 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 15:52:13,909 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 15:52:13,909 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:52:13] "[35m[1mGET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1[0m" 500 -
+2025-05-19 15:52:17,671 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:52:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:53:41,847 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:53:41,847 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:53:41,848 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:53:41,860 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:53:41,860 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:53:41,867 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:53:41,867 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:53:43,735 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:53:43] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:53:43,984 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:53:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:53:45,907 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 15:53:45,910 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 15:53:45,911 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:53:45] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 15:55:22,694 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:55:22,694 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:55:22,694 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:55:22,715 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:55:22,715 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:55:22,727 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:55:22,727 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:55:25,428 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:55:25] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:55:25,648 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:55:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:55:27,955 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 15:55:27,957 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 15:55:27,957 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:55:27] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 15:56:55,565 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:56:55,565 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:56:55,565 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:56:55,565 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:56:55,565 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:56:55,597 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:56:55,597 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:57:01,317 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:57:01] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:57:01,569 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:57:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:58:22,815 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 15:58:22,816 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 15:58:22,816 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 15:58:22,823 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 15:58:22,823 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 15:58:22,860 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 15:58:22,860 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 15:58:25,050 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:58:25] "GET /painel HTTP/1.1" 200 -
+2025-05-19 15:58:25,298 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:58:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 15:58:27,830 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 15:58:27,831 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 15:58:27,832 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 15:58:27] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:01:03,725 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 16:01:03,725 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 16:01:03,725 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 16:01:03,748 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 16:01:03,748 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 16:01:03,757 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 16:01:03,757 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 16:01:11,682 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:11] "GET / HTTP/1.1" 200 -
+2025-05-19 16:01:12,158 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:12] "[36mGET /static/logo.png HTTP/1.1[0m" 304 -
+2025-05-19 16:01:12,904 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 16:01:14,672 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:14] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-19 16:01:14,903 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:14] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:01:15,348 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:01:17,798 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:17,799 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:17,800 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:17] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:01:18,954 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:18,954 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:18,964 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:18] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:01:20,979 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:20,979 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:20,979 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:20] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:01:25,336 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:01:27,039 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:27,040 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:27,041 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:27] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:01:28,212 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:28,213 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:28,213 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:28] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:01:30,000 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:30,004 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:30,006 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:30] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:01:31,017 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:31,017 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:31,017 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:31] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:01:31,269 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:31,269 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:31,269 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:31] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:01:32,024 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:32,024 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:32,024 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:32] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:01:32,649 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:32,649 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:32,649 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:32] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:01:33,156 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:01:33,156 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:01:33,159 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:01:33] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:04:59,040 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:04:59,043 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:04:59,044 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:04:59] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:04:59,224 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:04:59,225 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:04:59,226 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:04:59] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:05:01,083 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:01] "GET /painel?page=2 HTTP/1.1" 200 -
+2025-05-19 16:05:01,305 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:05:10,637 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:10] "GET /painel?page=1 HTTP/1.1" 200 -
+2025-05-19 16:05:10,712 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:05:12,689 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:05:12,692 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:05:12,692 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:12] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:05:13,763 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:05:13,763 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:05:13,768 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:13] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:05:14,028 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:05:14,029 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:05:14,035 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:14] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:05:14,396 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:05:14,397 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:05:14,403 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:14] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:05:15,239 - __main__ - ERROR - Erro ao filtrar pacientes: no such column: c.primeira_consulta
+2025-05-19 16:05:15,239 - __main__ - ERROR - Traceback (most recent call last):
+  File "D:\Users\phgut\Downloads\AplicativoFilaEscoliose\app.py", line 1464, in filtrar_pacientes
+    pacientes = conn.execute(query).fetchall()
+                ^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: c.primeira_consulta
+
+2025-05-19 16:05:15,243 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:05:15] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:06:48,430 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 16:06:48,431 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 16:06:48,431 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 16:06:48,456 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 16:06:48,456 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 16:06:48,500 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 16:06:48,501 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 16:06:50,951 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:06:50] "GET /painel?page=1 HTTP/1.1" 200 -
+2025-05-19 16:06:51,287 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:06:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:06:53,017 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:06:53] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:06:57,022 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:06:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:08:59,527 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 16:08:59,527 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 16:08:59,528 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 16:08:59,542 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 16:08:59,542 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 16:08:59,563 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 16:08:59,564 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 16:09:03,583 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:03] "GET /painel?page=1 HTTP/1.1" 200 -
+2025-05-19 16:09:03,827 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:09:06,281 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:06] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:09:07,764 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:07] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:09,944 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:09] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:12,280 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:12] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:09:14,067 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:14] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:20,865 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:20] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:09:23,809 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:23] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:24,723 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:24] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:09:25,477 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:25] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:26,775 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:26] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:09:27,509 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:27] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:09:28,529 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:28] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -

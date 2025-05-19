@@ -167,6 +167,7 @@ def get_all_active_patients():
         return conn.execute("""
             SELECT p.id, p.nome, p.nascimento, p.contato, p.municipio, p.medico_assistente,
                 c.data AS ultima_consulta, c.escore AS escore, c.prioridade AS prioridade,
+                c.tipo_escoliose, c.grau_curva,
                 (
                     SELECT data FROM consultas WHERE paciente_id = p.id ORDER BY id ASC LIMIT 1
                 ) AS primeira_consulta,
@@ -193,6 +194,7 @@ def get_paginated_patients(per_page, offset):
         return conn.execute("""
             SELECT p.id, p.nome, p.nascimento, p.contato, p.municipio, p.medico_assistente,
                 c.data AS ultima_consulta, c.escore AS escore, c.prioridade AS prioridade,
+                c.tipo_escoliose, c.grau_curva,
                 (
                     SELECT data FROM consultas WHERE paciente_id = p.id ORDER BY id ASC LIMIT 1
                 ) AS primeira_consulta
@@ -1017,9 +1019,10 @@ def nova_consulta(paciente_id):
                 try:
                     conn.execute("BEGIN TRANSACTION")
                     conn.execute("""
-                        INSERT INTO consultas (paciente_id, data, escore, prioridade)
-                        VALUES (?, ?, ?, ?)""",
-                                 (paciente_id, data_consulta, escore, prioridade))
+                        INSERT INTO consultas (paciente_id, data, escore, prioridade, tipo_escoliose, grau_curva, observacoes)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                                 (paciente_id, data_consulta, escore, prioridade,
+                                  dados.get('tipo'), dados.get('grau_curva'), dados.get('observacoes')))
                     conn.execute("COMMIT")
                     flash("Consulta registrada com sucesso!")
                     logger.info(
@@ -1033,7 +1036,7 @@ def nova_consulta(paciente_id):
 
             # PARTE GET: consultar histórico + calcular idade
             historico = conn.execute("""
-                SELECT c.id, c.paciente_id, c.data, c.prioridade, c.escore
+                SELECT c.id, c.paciente_id, c.data, c.prioridade, c.escore, c.observacoes
                 FROM consultas c WHERE paciente_id = ? ORDER BY c.id DESC""",
                                      (paciente_id,)).fetchall()
 
@@ -1419,6 +1422,114 @@ def imprimir_lista_completa():
         flash("Erro ao gerar a lista para impressão.", "error")
         # Redireciona de volta ao painel em caso de erro
         return redirect(url_for('painel'))
+
+
+@app.route('/filtrar_pacientes')
+@login_required
+def filtrar_pacientes():
+    tipo = request.args.get('tipo', 'todos')  # 'idiopatica', 'sindromica', 'neuromuscular'
+
+    try:
+        with get_db_connection() as conn:
+            base_sql = """
+                SELECT p.id, p.nome, p.nascimento, p.contato, p.municipio, p.medico_assistente,
+                    c.data AS ultima_consulta, c.escore AS escore, c.prioridade AS prioridade,
+                    c.tipo_escoliose, c.grau_curva,
+                    (
+                        SELECT data FROM consultas dc WHERE dc.paciente_id = p.id ORDER BY dc.id ASC LIMIT 1
+                    ) AS primeira_consulta,
+                    c.data_judicial,
+                    c.is_demanda_judicial
+                FROM pacientes p
+                JOIN consultas c ON c.paciente_id = p.id
+                JOIN (
+                    SELECT paciente_id, MAX(id) as last_id
+                    FROM consultas
+                    GROUP BY paciente_id
+                ) latest ON latest.paciente_id = p.id AND c.id = latest.last_id
+            """
+            
+            conditions = []
+            # params list is not used in this specific query construction with f-strings for conditions,
+            # but good practice if parameters were bound.
+            # params = [] 
+
+            # Adicionar filtro por tipo de escoliose
+            if tipo == 'idiopatica':
+                conditions.append("c.tipo_escoliose = '1'")
+            elif tipo == 'sindromica':
+                conditions.append("c.tipo_escoliose = '2'")
+            elif tipo == 'neuromuscular':
+                conditions.append("c.tipo_escoliose = '3'")
+            # Se tipo == 'todos', nenhum filtro de tipo_escoliose é adicionado.
+            # Pacientes com tipo_escoliose IS NULL ou vazio serão incluídos se 'todos' for selecionado,
+            # e excluídos dos filtros específicos, sendo rotulados como 'Não informado' na conversão.
+
+            if conditions:
+                base_sql += " WHERE " + " AND ".join(conditions)
+
+            # Ordenação consistente com a do painel principal
+            base_sql += """
+                ORDER BY
+                    c.is_demanda_judicial DESC,
+                    c.data_judicial DESC,
+                    c.escore DESC,
+                    c.data DESC
+            """
+            
+            pacientes_raw = conn.execute(base_sql).fetchall()
+
+            pacientes_list = []
+            for p_row in pacientes_raw:
+                p = dict(p_row)  # Converter sqlite3.Row para dict
+                
+                tipo_escoliose_val = p.get('tipo_escoliose')
+                
+                paciente_dict = {
+                    'id': p.get('id'),
+                    'nome': p.get('nome', ''),
+                    'nascimento': p.get('nascimento', ''),
+                    'contato': p.get('contato', ''),
+                    'municipio': p.get('municipio', ''),
+                    'ultima_consulta': p.get('ultima_consulta', ''),
+                    'escore': p.get('escore', 0),
+                    'prioridade': p.get('prioridade', 'Não informado'),
+                    'tipo_escoliose': ('Idiopática' if tipo_escoliose_val == '1' else
+                                       'Sindrômica' if tipo_escoliose_val == '2' else
+                                       'Neuromuscular' if tipo_escoliose_val == '3' else
+                                       'Não informado'),
+                    'grau_curva': p.get('grau_curva', ''),
+                    'primeira_consulta': p.get('primeira_consulta', ''),
+                    'medico_assistente': p.get('medico_assistente', ''),
+                    'is_demanda_judicial': p.get('is_demanda_judicial', 0), # Incluído para consistência se necessário no JS
+                    'data_judicial': p.get('data_judicial') # Incluído para consistência
+                }
+                pacientes_list.append(paciente_dict)
+
+            # Contar totais para a lista filtrada
+            total_filtrado = len(pacientes_list)
+            total_alta_prioridade_filtrado = sum(
+                1 for p_dict in pacientes_list if p_dict['prioridade'] == 'Alta Prioridade')
+            total_intermediaria_filtrado = sum(
+                1 for p_dict in pacientes_list if p_dict['prioridade'] == 'Prioridade Intermediária')
+            total_eletiva_filtrado = sum(
+                1 for p_dict in pacientes_list if p_dict['prioridade'] == 'Prioridade Eletiva')
+
+            return jsonify({
+                'pacientes': pacientes_list,
+                'total': total_filtrado,
+                'total_alta_prioridade': total_alta_prioridade_filtrado,
+                'total_intermediaria': total_intermediaria_filtrado,
+                'total_eletiva': total_eletiva_filtrado
+            })
+
+    except Exception as e:
+        logger.error(f"Erro ao filtrar pacientes: {str(e)}")
+        logger.error(traceback.format_exc())
+        return jsonify({
+            'pacientes': [], 'total': 0, 'total_alta_prioridade': 0,
+            'total_intermediaria': 0, 'total_eletiva': 0, 'error': str(e)
+        }), 500
 
 # Add error handler
 
