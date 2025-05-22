@@ -938,76 +938,77 @@
 
 <script nonce="{{ csp_nonce() }}">
     document.addEventListener('DOMContentLoaded', function () {
-        const userProfile = {{ session["perfil"]|tojson|safe }};
-        const paginationContainer = document.getElementById('paginationContainer'); 
+        const userProfile = {{ session["perfil"]| tojson | safe
+    }};
+    const paginationContainer = document.getElementById('paginationContainer');
 
-        window.filtrarPorTipo = function (tipo) {
-            try {
-                const buttons = document.querySelectorAll('.btn-filter');
-                buttons.forEach(btn => btn.classList.remove('active'));
+    window.filtrarPorTipo = function (tipo) {
+        try {
+            const buttons = document.querySelectorAll('.btn-filter');
+            buttons.forEach(btn => btn.classList.remove('active'));
 
-                if (event && event.target && event.target.id !== 'mostrarTodosBtn') {
-                    event.target.classList.add('active');
+            if (event && event.target && event.target.id !== 'mostrarTodosBtn') {
+                event.target.classList.add('active');
+            }
+
+            fetch(`/filtrar_pacientes?tipo=${tipo}`, {
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token() }}'
                 }
-
-                fetch(`/filtrar_pacientes?tipo=${tipo}`, {
-                    headers: {
-                        'X-CSRFToken': '{{ csrf_token() }}'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Erro do servidor ao filtrar:', data.error);
+                        alert('Erro ao filtrar pacientes: ' + data.error);
+                        return;
                     }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            console.error('Erro do servidor ao filtrar:', data.error);
-                            alert('Erro ao filtrar pacientes: ' + data.error);
-                            return;
+                    if (!data || !Array.isArray(data.pacientes)) {
+                        console.error('Dados inválidos recebidos do servidor');
+                        alert('Erro ao processar dados dos pacientes.');
+                        return;
+                    }
+
+                    const tbody = document.querySelector('.patients-table tbody');
+                    if (!tbody) {
+                        console.error('Elemento tbody não encontrado');
+                        return;
+                    }
+                    tbody.innerHTML = '';
+
+                    data.pacientes.forEach((p, index) => {
+                        if (!p) return;
+
+                        const tr = document.createElement('tr');
+                        const prioridade = p.prioridade || 'Não informado';
+                        tr.className = prioridade.toLowerCase().replace(/\s+/g, '-');
+                        tr.setAttribute('data-nome', p.nome || '');
+                        tr.setAttribute('data-prioridade', prioridade);
+
+                        // Determina o conteúdo da primeira célula (checkbox ou vazia)
+                        let firstCell = '';
+                        if (userProfile === 'admin') {
+                            firstCell = `<td><input type="checkbox" name="selecionados" value="${p.id || ''}" class="patient-checkbox"></td>`;
                         }
-                        if (!data || !Array.isArray(data.pacientes)) {
-                            console.error('Dados inválidos recebidos do servidor');
-                            alert('Erro ao processar dados dos pacientes.');
-                            return;
+
+                        // Determina o link do nome do paciente
+                        let nomeLink = p.nome || '';
+                        if (userProfile !== 'gestor') {
+                            nomeLink = `<a href="/nova_consulta/${p.id || ''}">${p.nome || ''}</a>`;
                         }
 
-                        const tbody = document.querySelector('.patients-table tbody');
-                        if (!tbody) {
-                            console.error('Elemento tbody não encontrado');
-                            return;
-                        }
-                        tbody.innerHTML = ''; 
-
-                        data.pacientes.forEach((p, index) => {
-                            if (!p) return; 
-
-                            const tr = document.createElement('tr');
-                            const prioridade = p.prioridade || 'Não informado';
-                            tr.className = prioridade.toLowerCase().replace(/\s+/g, '-');
-                            tr.setAttribute('data-nome', p.nome || '');
-                            tr.setAttribute('data-prioridade', prioridade);
-
-                            // Determina o conteúdo da primeira célula (checkbox ou vazia)
-                            let firstCell = '';
-                            if (userProfile === 'admin') {
-                                firstCell = `<td><input type="checkbox" name="selecionados" value="${p.id || ''}" class="patient-checkbox"></td>`;
-                            }
-
-                            // Determina o link do nome do paciente
-                            let nomeLink = p.nome || '';
-                            if (userProfile !== 'gestor') {
-                                nomeLink = `<a href="/nova_consulta/${p.id || ''}">${p.nome || ''}</a>`;
-                            }
-
-                            // Botão de demanda judicial condicional
-                            let judicialButton = '';
-                            if (['medico', 'admin', 'gestor'].includes(userProfile)) {
-                                judicialButton = `
+                        // Botão de demanda judicial condicional
+                        let judicialButton = '';
+                        if (['medico', 'admin', 'gestor'].includes(userProfile)) {
+                            judicialButton = `
                                 <button class="action-btn btn-judicial ${prioridade === 'Demanda Judicial' ? 'active' : ''}"
                                     data-paciente-id="${p.id || ''}"
                                     title="${prioridade === 'Demanda Judicial' ? 'Remover status de Demanda Judicial' : 'Marcar como Demanda Judicial'}">
                                     <i class="fas fa-exclamation"></i>
                                 </button>`;
-                            }
+                        }
 
-                            tr.innerHTML = `
+                        tr.innerHTML = `
                             ${firstCell}
                             <td>${index + 1}</td>
                             <td>${nomeLink}</td>
@@ -1037,85 +1038,85 @@
                                 ${judicialButton}
                             </td>
                         `;
-                            tbody.appendChild(tr);
-                        });
-
-                        const statValues = document.querySelectorAll('.stat-value');
-                        if (statValues.length >= 4) {
-                            statValues[0].textContent = data.total || 0; 
-                            statValues[1].textContent = data.total_alta_prioridade || 0;
-                            statValues[2].textContent = data.total_intermediaria || 0;
-                            statValues[3].textContent = data.total_eletiva || 0;
-                        }
-                        
-                        if (paginationContainer) {
-                            paginationContainer.style.display = 'none';
-                        }
-                        initializeActionButtons(); 
-                    })
-                    .catch(error => {
-                        console.error('Erro ao filtrar pacientes:', error);
-                        alert('Erro ao filtrar pacientes. Por favor, tente novamente.');
+                        tbody.appendChild(tr);
                     });
-            } catch (error) {
-                console.error('Erro ao processar filtro:', error);
-                alert('Erro ao processar filtro. Por favor, tente novamente.');
-            }
-        };
 
-        const mostrarTodosBtn = document.getElementById('mostrarTodosBtn');
-        if (mostrarTodosBtn) {
-            mostrarTodosBtn.addEventListener('click', function() {
-                const buttons = document.querySelectorAll('.btn-filter');
-                buttons.forEach(btn => btn.classList.remove('active'));
-                window.location.href = "{{ url_for('painel') }}";
-            });
-        }
+                    const statValues = document.querySelectorAll('.stat-value');
+                    if (statValues.length >= 4) {
+                        statValues[0].textContent = data.total || 0;
+                        statValues[1].textContent = data.total_alta_prioridade || 0;
+                        statValues[2].textContent = data.total_intermediaria || 0;
+                        statValues[3].textContent = data.total_eletiva || 0;
+                    }
 
-        console.log('Tipos de escoliose na tabela (após carregamento inicial ou filtro):');
-        document.querySelectorAll('.patients-table tbody tr').forEach(row => {
-            const adminCheckboxOffset = userProfile === 'admin' ? 1 : 0;
-            const tipoCellIndex = 6 + adminCheckboxOffset; // Nome(1) + Nasc(2) + UltCons(3) + Esc(4) + Prio(5) + TIPO(6)
-            const tipoCell = row.cells[tipoCellIndex]; 
-            if (tipoCell) {
-                 console.log(tipoCell.textContent.trim());
-            }
-        });
-        
-        function initializeActionButtons() {
-            document.querySelectorAll('.action-btn.btn-info').forEach(button => {
-                button.addEventListener('click', function () {
-                    const contato = this.dataset.contato;
-                    const municipio = this.dataset.municipio;
-                    const primeiraConsulta = this.dataset.primeiraConsulta;
-                    const medicoAssistente = this.dataset.medicoAssistente;
-                    alert(`Detalhes:\nContato: ${contato}\nMunicípio: ${municipio}\nPrimeira Consulta: ${primeiraConsulta}\nMédico Assistente: ${medicoAssistente}`);
+                    if (paginationContainer) {
+                        paginationContainer.style.display = 'none';
+                    }
+                    initializeActionButtons();
+                })
+                .catch(error => {
+                    console.error('Erro ao filtrar pacientes:', error);
+                    alert('Erro ao filtrar pacientes. Por favor, tente novamente.');
                 });
-            });
+        } catch (error) {
+            console.error('Erro ao processar filtro:', error);
+            alert('Erro ao processar filtro. Por favor, tente novamente.');
+        }
+    };
 
-            document.querySelectorAll('.action-btn.btn-agenda').forEach(button => {
-                button.addEventListener('click', function () {
-                    const pacienteId = this.dataset.pacienteId;
-                    const dataCirurgiaPrompt = prompt(`Agendar cirurgia para o paciente ID ${pacienteId}.\nDigite a data (DD/MM/AAAA):`);
-                    if (dataCirurgiaPrompt) {
-                        try {
-                            const [dia, mes, ano] = dataCirurgiaPrompt.split('/');
-                            if (!dia || !mes || !ano || dia.length !== 2 || mes.length !== 2 || ano.length !== 4) {
-                                throw new Error('Formato de data inválido.');
-                            }
-                            const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`; 
-                            
-                            fetch('/agendar_cirurgia', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRFToken': '{{ csrf_token() }}'
-                                },
-                                body: JSON.stringify({
-                                    paciente_id: pacienteId,
-                                    data_cirurgia: dataFormatada 
-                                })
+    const mostrarTodosBtn = document.getElementById('mostrarTodosBtn');
+    if (mostrarTodosBtn) {
+        mostrarTodosBtn.addEventListener('click', function () {
+            const buttons = document.querySelectorAll('.btn-filter');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            window.location.href = "{{ url_for('painel') }}";
+        });
+    }
+
+    console.log('Tipos de escoliose na tabela (após carregamento inicial ou filtro):');
+    document.querySelectorAll('.patients-table tbody tr').forEach(row => {
+        const adminCheckboxOffset = userProfile === 'admin' ? 1 : 0;
+        const tipoCellIndex = 6 + adminCheckboxOffset; // Nome(1) + Nasc(2) + UltCons(3) + Esc(4) + Prio(5) + TIPO(6)
+        const tipoCell = row.cells[tipoCellIndex];
+        if (tipoCell) {
+            console.log(tipoCell.textContent.trim());
+        }
+    });
+
+    function initializeActionButtons() {
+        document.querySelectorAll('.action-btn.btn-info').forEach(button => {
+            button.addEventListener('click', function () {
+                const contato = this.dataset.contato;
+                const municipio = this.dataset.municipio;
+                const primeiraConsulta = this.dataset.primeiraConsulta;
+                const medicoAssistente = this.dataset.medicoAssistente;
+                alert(`Detalhes:\nContato: ${contato}\nMunicípio: ${municipio}\nPrimeira Consulta: ${primeiraConsulta}\nMédico Assistente: ${medicoAssistente}`);
+            });
+        });
+
+        document.querySelectorAll('.action-btn.btn-agenda').forEach(button => {
+            button.addEventListener('click', function () {
+                const pacienteId = this.dataset.pacienteId;
+                const dataCirurgiaPrompt = prompt(`Agendar cirurgia para o paciente ID ${pacienteId}.\nDigite a data (DD/MM/AAAA):`);
+                if (dataCirurgiaPrompt) {
+                    try {
+                        const [dia, mes, ano] = dataCirurgiaPrompt.split('/');
+                        if (!dia || !mes || !ano || dia.length !== 2 || mes.length !== 2 || ano.length !== 4) {
+                            throw new Error('Formato de data inválido.');
+                        }
+                        const dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
+
+                        fetch('/agendar_cirurgia', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token() }}'
+                            },
+                            body: JSON.stringify({
+                                paciente_id: pacienteId,
+                                data_cirurgia: dataFormatada
                             })
+                        })
                             .then(response => response.json())
                             .then(data => {
                                 if (data.sucesso) {
@@ -1128,34 +1129,34 @@
                                 console.error('Erro ao agendar:', err);
                                 alert('Erro ao conectar com o servidor para agendamento.');
                             });
-                        } catch (e) {
-                            alert(e.message + ' Use o formato DD/MM/AAAA.');
-                        }
+                    } catch (e) {
+                        alert(e.message + ' Use o formato DD/MM/AAAA.');
                     }
-                });
+                }
             });
+        });
 
-            document.querySelectorAll('.action-btn.btn-judicial').forEach(button => {
-                button.addEventListener('click', function () {
-                    const pacienteId = this.dataset.pacienteId;
-                    const isCurrentlyJudicial = this.classList.contains('active');
-                    const action = isCurrentlyJudicial ? 'remover' : 'marcar';
-                    
-                    if (confirm(`Deseja ${action} este paciente como Demanda Judicial?`)) {
-                        const formData = new FormData();
-                        formData.append('paciente_id', pacienteId);
-                        if (isCurrentlyJudicial) {
-                            formData.append('remover', 'true');
-                        }
-                        formData.append('csrf_token', '{{ csrf_token() }}');
+        document.querySelectorAll('.action-btn.btn-judicial').forEach(button => {
+            button.addEventListener('click', function () {
+                const pacienteId = this.dataset.pacienteId;
+                const isCurrentlyJudicial = this.classList.contains('active');
+                const action = isCurrentlyJudicial ? 'remover' : 'marcar';
 
-                        fetch('/marcar_demanda_judicial', {
-                            method: 'POST',
-                            body: formData
-                        })
+                if (confirm(`Deseja ${action} este paciente como Demanda Judicial?`)) {
+                    const formData = new FormData();
+                    formData.append('paciente_id', pacienteId);
+                    if (isCurrentlyJudicial) {
+                        formData.append('remover', 'true');
+                    }
+                    formData.append('csrf_token', '{{ csrf_token() }}');
+
+                    fetch('/marcar_demanda_judicial', {
+                        method: 'POST',
+                        body: formData
+                    })
                         .then(response => {
                             if (response.ok) {
-                                window.location.reload(); 
+                                window.location.reload();
                             } else {
                                 alert('Erro ao atualizar status de demanda judicial.');
                             }
@@ -1164,12 +1165,12 @@
                             console.error('Erro ao marcar/desmarcar demanda judicial:', err);
                             alert('Erro de conexão ao atualizar demanda judicial.');
                         });
-                    }
-                });
+                }
             });
-        }
+        });
+    }
 
-        initializeActionButtons();
+    initializeActionButtons();
 
     });
 </script>

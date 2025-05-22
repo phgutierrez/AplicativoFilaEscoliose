@@ -853,3 +853,50 @@ sqlite3.OperationalError: no such column: c.primeira_consulta
 2025-05-19 16:09:26,775 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:26] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
 2025-05-19 16:09:27,509 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:27] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
 2025-05-19 16:09:28,529 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:09:28] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:33:03,336 - database - INFO - Initializing database engine with path: fila_escoliose.db
+2025-05-19 16:33:03,336 - database - INFO - Engine created: Engine(sqlite:///fila_escoliose.db)
+2025-05-19 16:33:03,337 - __main__ - INFO - Creating database tables with SQLAlchemy
+2025-05-19 16:33:03,356 - cleanup_tasks - INFO - Cleaning temporary files from D:\Users\phgut\Downloads\AplicativoFilaEscoliose\tmp older than 24 hours
+2025-05-19 16:33:03,356 - cleanup_tasks - INFO - Cleanup completed. Removed 0 temporary files.
+2025-05-19 16:33:03,379 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.5.137:5000
+2025-05-19 16:33:03,380 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-19 16:33:05,836 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:05] "GET /painel?page=1 HTTP/1.1" 200 -
+2025-05-19 16:33:06,195 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:33:09,174 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:09] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:33:10,107 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:10] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:33:41,586 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:41] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:33:41,875 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:33:43,813 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:43] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:33:44,837 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:44] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:33:45,800 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:45] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:33:46,316 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:46] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:33:46,612 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:33:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:34:53,447 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:53] "GET /nova_consulta/18 HTTP/1.1" 200 -
+2025-05-19 16:34:53,507 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:34:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:36:51,067 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:36:51] "GET / HTTP/1.1" 200 -
+2025-05-19 16:36:53,433 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:36:53] "GET /static/logo.png HTTP/1.1" 200 -
+2025-05-19 16:36:54,283 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:36:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 16:38:42,044 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:38:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 16:38:46,313 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:38:46] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-19 16:38:46,369 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:38:46] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:38:46,813 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:38:46] "GET /static/style.css HTTP/1.1" 200 -
+2025-05-19 16:38:58,265 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:38:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 16:39:20,502 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:39:20] "GET /nova_consulta/27 HTTP/1.1" 200 -
+2025-05-19 16:39:20,968 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:39:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:39:50,963 - __main__ - INFO - Nova consulta registrada para paciente 27
+2025-05-19 16:39:50,965 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:39:50] "[32mPOST /nova_consulta/27 HTTP/1.1[0m" 302 -
+2025-05-19 16:39:51,537 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:39:51] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:39:53,860 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:39:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:40:07,294 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:07] "GET /filtrar_pacientes?tipo=idiopatica HTTP/1.1" 200 -
+2025-05-19 16:40:08,751 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:08] "GET /filtrar_pacientes?tipo=neuromuscular HTTP/1.1" 200 -
+2025-05-19 16:40:10,310 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:10] "GET /filtrar_pacientes?tipo=sindromica HTTP/1.1" 200 -
+2025-05-19 16:40:15,914 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:15] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:40:16,400 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:40:23,013 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:40:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 16:42:47,595 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:42:47] "GET /nova_consulta/27 HTTP/1.1" 200 -
+2025-05-19 16:42:47,826 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:42:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2025-05-19 16:50:36,794 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:50:36] "GET /painel HTTP/1.1" 200 -
+2025-05-19 16:50:37,005 - werkzeug - INFO - 127.0.0.1 - - [19/May/2025 16:50:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

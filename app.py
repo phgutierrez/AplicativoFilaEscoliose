@@ -1427,7 +1427,8 @@ def imprimir_lista_completa():
 @app.route('/filtrar_pacientes')
 @login_required
 def filtrar_pacientes():
-    tipo = request.args.get('tipo', 'todos')  # 'idiopatica', 'sindromica', 'neuromuscular'
+    # 'idiopatica', 'sindromica', 'neuromuscular'
+    tipo = request.args.get('tipo', 'todos')
 
     try:
         with get_db_connection() as conn:
@@ -1448,11 +1449,11 @@ def filtrar_pacientes():
                     GROUP BY paciente_id
                 ) latest ON latest.paciente_id = p.id AND c.id = latest.last_id
             """
-            
+
             conditions = []
             # params list is not used in this specific query construction with f-strings for conditions,
             # but good practice if parameters were bound.
-            # params = [] 
+            # params = []
 
             # Adicionar filtro por tipo de escoliose
             if tipo == 'idiopatica':
@@ -1476,15 +1477,15 @@ def filtrar_pacientes():
                     c.escore DESC,
                     c.data DESC
             """
-            
+
             pacientes_raw = conn.execute(base_sql).fetchall()
 
             pacientes_list = []
             for p_row in pacientes_raw:
                 p = dict(p_row)  # Converter sqlite3.Row para dict
-                
+
                 tipo_escoliose_val = p.get('tipo_escoliose')
-                
+
                 paciente_dict = {
                     'id': p.get('id'),
                     'nome': p.get('nome', ''),
@@ -1501,8 +1502,10 @@ def filtrar_pacientes():
                     'grau_curva': p.get('grau_curva', ''),
                     'primeira_consulta': p.get('primeira_consulta', ''),
                     'medico_assistente': p.get('medico_assistente', ''),
-                    'is_demanda_judicial': p.get('is_demanda_judicial', 0), # Incluído para consistência se necessário no JS
-                    'data_judicial': p.get('data_judicial') # Incluído para consistência
+                    # Incluído para consistência se necessário no JS
+                    'is_demanda_judicial': p.get('is_demanda_judicial', 0),
+                    # Incluído para consistência
+                    'data_judicial': p.get('data_judicial')
                 }
                 pacientes_list.append(paciente_dict)
 
